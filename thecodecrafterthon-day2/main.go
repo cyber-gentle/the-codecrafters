@@ -17,7 +17,11 @@ var ()
 // }
 
 func hexToDecimal(s string, base int) (int64, error) {
-	return strconv.ParseInt(s, base, 64)
+	dec, err := strconv.ParseInt(s, base, 64)
+	if err != nil {
+		fmt.Println("Invalid Hexadecimal number:", err)
+	}
+	return dec, err
 }
 
 func binToDecimal(n string, base int) (int64, error) {
@@ -26,7 +30,7 @@ func binToDecimal(n string, base int) (int64, error) {
 
 func main() {
 	reader := bufio.NewReader(os.Stdin)
-
+start:
 	fmt.Println("       Welcome!")
 	fmt.Println(" Select Base to covert\n 1. Decimal to Binary and HexaDecimal\n 2. HexaDecimal to Decimal\n 3. Binary to Decimal")
 	fmt.Println("Pick any one to continue: ")
@@ -49,7 +53,7 @@ func main() {
 			base = strings.TrimSpace(base)
 			c_base, _ := strconv.Atoi(base) // c_base stands for cleaned base after Atoi
 			fmt.Println(hexToDecimal(number, c_base))
-			return
+			goto start
 
 		}
 	}
