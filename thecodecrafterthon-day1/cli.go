@@ -9,7 +9,8 @@ import (
 )
 
 var (
-	num1, num2 int
+	num1, num2 int // integer storer
+	p_choice int // proceed choice
 )
 
 func main() {
@@ -31,7 +32,16 @@ func main() {
 			result := num1 + num2
 			fmt.Printf("%d + %d is = %d\n", num1, num2, result)
 
-			fmt.Println("Do you want add another set of numbers?\n 1. Yes")
+			fmt.Println("Do you want add another set of numbers?\n 1. Yes\n 2.No\n")
+			fmt.Scanln(&p_choice)
+
+			if p_choice == 1 {
+				continue
+			} else if p_choice == 2 {
+				return
+			} else {
+				fmt.Println("Choose from the options above")
+			}
 
 		case 2:
 			fmt.Print("Enter first number: ")
