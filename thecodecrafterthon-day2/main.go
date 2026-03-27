@@ -44,16 +44,21 @@ start:
 			fmt.Println("Enter a binary number to ")
 
 		case 2:
+		case2Start:
 			fmt.Println()
 			fmt.Print("Enter a valid HexaDecimal Number to convert to Decimal: ")
 			number, _ := reader.ReadString('\n')
 			number = strings.TrimSpace(number)
+			if number == "" {
+				fmt.Println("It's an Empty string, Enter a valid HexaDecimal number")
+				goto case2Start
+			}
 
 			base := 16
 			fmt.Println(hexToDecimal(number, base))
 
 			fmt.Println()
-			fmt.Print("Do you have another HexaDecimal number to convert\n 1. Yes\n 2. No, Quit\n 3. Go to Menu\n")
+			fmt.Print("Do you have another HexaDecimal number to convert?\n 1. Yes\n 2. No, Quit\n 3. Go to Menu\n Select choice here: ")
 			choice, _ := reader.ReadString('\n')
 			choice = strings.TrimSpace(choice)
 			choice_number, _ := strconv.Atoi(choice) // cleaned choice after atoi
@@ -65,6 +70,7 @@ start:
 			} else if choice_number == 3 {
 				goto start
 			}
+
 		case 3:
 			fmt.Println()
 			fmt.Print("Enter a valid Binary Number to convert to Decimal: ")
@@ -75,7 +81,7 @@ start:
 			fmt.Println(binToDecimal(number, base))
 
 			fmt.Println()
-			fmt.Print("Do you have another Binary number to convert\n 1. Yes\n 2. No, Quit\n 3. Go to Menu\n")
+			fmt.Print("Do you have another Binary number to convert\n 1. Yes\n 2. No, Quit\n 3. Go to Menu\n Select choice here: ")
 			choice, _ := reader.ReadString('\n')
 			choice = strings.TrimSpace(choice)
 			choice_number, _ := strconv.Atoi(choice) // cleaned choice after atoi
@@ -87,6 +93,10 @@ start:
 			} else if choice_number == 3 {
 				goto start
 			}
+
+		case 4:
+			fmt.Println("Exiting, Goodbye!")
+			return
 
 		}
 	}
