@@ -16,6 +16,7 @@ var (
 func main() {
 
 	reader := bufio.NewReader(os.Stdin)
+start:
 	fmt.Printf("CHOOSE AN OPERATION TO EXECUTE\n 1. Addition\n 2. Subtraction\n 3. Multiplication\n 4. Division\n 5. Exit\n Type %q for more info\n", "HELP")
 	fmt.Print("Select an operation to continue: ")
 	op_c, _ := reader.ReadString('\n')
@@ -26,15 +27,26 @@ func main() {
 
 		switch op {
 		case 1:
+
+		case1FirstNumber:
 			fmt.Print("Enter first number: ")
-			fmt.Scanln(&num1)
+			number1, err := fmt.Scanln(&num1)
+			if err != nil {
+				fmt.Println("Enter a number and not alphabet")
+				goto case1FirstNumber
+			}
+		case1SecondNumber:
 			fmt.Print("Enter second number: ")
-			fmt.Scanln(&num2)
-			result := num1 + num2
-			fmt.Printf("%d + %d is = %d\n", num1, num2, result)
+			number2, err := fmt.Scanln(&num2)
+			if err != nil {
+				fmt.Println("Enter a number and not alphabet")
+				goto case1SecondNumber
+			}
+			result := number1 + number2
+			fmt.Printf("%d + %d is = %d\n", number1, number2, result)
 			fmt.Println()
 
-			fmt.Print("Do you want add another set of numbers?\n 1. Yes, I want to.\n 2. No, Quit.\n")
+			fmt.Print("Do you want add another set of numbers?\n 1. Yes, I want to.\n 2. No, Quit.\n 3. Go to Menu\n")
 			fmt.Print("Pick your choice: ")
 			fmt.Scanln(&p_choice)
 
@@ -42,19 +54,31 @@ func main() {
 				continue
 			} else if p_choice == 2 {
 				return
+			} else if p_choice == 3 {
+				goto start
 			} else {
 				fmt.Println("Choose from the options above")
 			}
 
 		case 2:
+		case2FirstNumber:
 			fmt.Print("Enter first number: ")
-			fmt.Scanln(&num1)
+			number1, err := fmt.Scanln(&num1)
+			if err != nil {
+				fmt.Println("Enter a number and not alphabet")
+				goto case2FirstNumber
+			}
+		case2SecondNumber:
 			fmt.Print("Enter second number: ")
-			fmt.Scanln(&num2)
-			result := num1 - num2
-			fmt.Printf("%d - %d is = %d\n", num1, num2, result)
+			number2, err := fmt.Scanln(&num2)
+			if err != nil {
+				fmt.Println("Enter a number and not alphabet")
+				goto case2SecondNumber
+			}
+			result := number1 - number2
+			fmt.Printf("%d - %d is = %d\n", number1, num2, result)
 
-			fmt.Print("Do you want subtract another set of numbers?\n 1. Yes, I want to.\n 2. No, Quit.\n")
+			fmt.Print("Do you want subtract another set of numbers?\n 1. Yes, I want to.\n 2. No, Quit.\n 3. Go to Menu\n")
 			fmt.Print("Pick your choice: ")
 			fmt.Scanln(&p_choice)
 
@@ -62,19 +86,31 @@ func main() {
 				continue
 			} else if p_choice == 2 {
 				return
+			} else if p_choice == 3 {
+				goto start
 			} else {
 				fmt.Println("Choose from the options above")
 			}
 
 		case 3:
+		case3FirstNumber:
 			fmt.Print("Enter first number: ")
-			fmt.Scanln(&num1)
+			number1, err := fmt.Scanln(&num1)
+			if err != nil {
+				fmt.Println("Enter a number and not alphabet")
+				goto case3FirstNumber
+			}
+		case3SecondNumber:
 			fmt.Print("Enter second number: ")
-			fmt.Scanln(&num2)
-			result := num1 * num2
-			fmt.Printf("%d x %d is = %d\n", num1, num2, result)
+			number2, err := fmt.Scanln(&num2)
+			if err != nil {
+				fmt.Println("Enter a number and not alphabet")
+				goto case3SecondNumber
+			}
+			result := number1 * number2
+			fmt.Printf("%d x %d is = %d\n", number1, number2, result)
 
-			fmt.Print("Do you want multiply another set of numbers?\n 1. Yes, I want to.\n 2. No, Quit.\n")
+			fmt.Print("Do you want multiply another set of numbers?\n 1. Yes, I want to.\n 2. No, Quit.\n 3. Go to Menu\n")
 			fmt.Print("Pick your choice: ")
 			fmt.Scanln(&p_choice)
 
@@ -82,23 +118,35 @@ func main() {
 				continue
 			} else if p_choice == 2 {
 				return
+			} else if p_choice == 3 {
+				goto start
 			} else {
 				fmt.Println("Choose from the options above")
 			}
 
 		case 4:
+		case4FirstNumber:
 			fmt.Print("Enter first number: ")
-			fmt.Scanln(&num1)
+			number1, err := fmt.Scanln(&num1)
+			if err != nil {
+				fmt.Println("Enter a number and not alphabet")
+				goto case4FirstNumber
+			}
+		case4SecondNumber:
 			fmt.Print("Enter second number: ")
-			fmt.Scanln(&num2)
+			number2, err := fmt.Scanln(&num1)
+			if err != nil {
+				fmt.Println("Enter a number and not alphabet")
+				goto case4SecondNumber
+			}
 			if num2 == 0 {
 				fmt.Println("Divisor can't be zero")
-				continue
+				goto case4SecondNumber
 			}
-			result := num1 / num2
-			fmt.Printf("%d ÷ %d is = %d\n", num1, num2, result)
+			result := number1 / number2
+			fmt.Printf("%d ÷ %d is = %d\n", number1, number2, result)
 
-			fmt.Print("Do you want divide another set of numbers?\n 1. Yes, I want to.\n 2. No, Quit.\n")
+			fmt.Print("Do you want divide another set of numbers?\n 1. Yes, I want to.\n 2. No, Quit.\n 3. Go to Menu\n")
 			fmt.Print("Pick your choice: ")
 			fmt.Scanln(&p_choice)
 
@@ -106,6 +154,8 @@ func main() {
 				continue
 			} else if p_choice == 2 {
 				return
+			} else if p_choice == 3 {
+				goto start
 			} else {
 				fmt.Println("Choose from the options above")
 			}
