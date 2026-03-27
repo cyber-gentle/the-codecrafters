@@ -10,7 +10,7 @@ import (
 
 var (
 	num1, num2 int // integer storer
-	p_choice   int // proceed choice
+	p_choice   int // proceed choice whether to do another calculation or not
 )
 
 func main() {
