@@ -32,8 +32,8 @@ func main() {
 	reader := bufio.NewReader(os.Stdin)
 start:
 	fmt.Println("       Welcome!")
-	fmt.Println(" Select Base to covert\n 1. Decimal to Binary and HexaDecimal\n 2. HexaDecimal to Decimal\n 3. Binary to Decimal")
-	fmt.Println("Pick any one to continue: ")
+	fmt.Print(" Select Base to covert\n 1. Decimal to Binary and HexaDecimal\n 2. HexaDecimal to Decimal\n 3. Binary to Decimal\n 4. Exit\n")
+	fmt.Print("Pick any one to continue: ")
 	choice, _ := reader.ReadString('\n')
 	choice = strings.TrimSpace(choice)
 	c_choice, _ := strconv.Atoi(choice) // c_choice stands for cleaned choice after Atoi
@@ -44,17 +44,49 @@ start:
 			fmt.Println("Enter a binary number to ")
 
 		case 2:
-		case2Number:
-			fmt.Println("Enter an HexaDecimal Number to convert to Decimal")
+			fmt.Println()
+			fmt.Print("Enter a valid HexaDecimal Number to convert to Decimal: ")
 			number, _ := reader.ReadString('\n')
 			number = strings.TrimSpace(number)
 
-			fmt.Println("Enter current base")
-			base, _ := reader.ReadString('\n')
-			base = strings.TrimSpace(base)
-			c_base, _ := strconv.Atoi(base) // c_base stands for cleaned base after Atoi
-			fmt.Println(hexToDecimal(number, c_base))
-			goto start
+			base := 16
+			fmt.Println(hexToDecimal(number, base))
+
+			fmt.Println()
+			fmt.Print("Do you have another HexaDecimal number to convert\n 1. Yes\n 2. No, Quit\n 3. Go to Menu\n")
+			choice, _ := reader.ReadString('\n')
+			choice = strings.TrimSpace(choice)
+			choice_number, _ := strconv.Atoi(choice) // cleaned choice after atoi
+
+			if choice_number == 1 {
+				continue
+			} else if choice_number == 2 {
+				return
+			} else if choice_number == 3 {
+				goto start
+			}
+		case 3:
+			fmt.Println()
+			fmt.Print("Enter a valid Binary Number to convert to Decimal: ")
+			number, _ := reader.ReadString('\n')
+			number = strings.TrimSpace(number)
+
+			base := 2
+			fmt.Println(binToDecimal(number, base))
+
+			fmt.Println()
+			fmt.Print("Do you have another Binary number to convert\n 1. Yes\n 2. No, Quit\n 3. Go to Menu\n")
+			choice, _ := reader.ReadString('\n')
+			choice = strings.TrimSpace(choice)
+			choice_number, _ := strconv.Atoi(choice) // cleaned choice after atoi
+
+			if choice_number == 1 {
+				continue
+			} else if choice_number == 2 {
+				return
+			} else if choice_number == 3 {
+				goto start
+			}
 
 		}
 	}
