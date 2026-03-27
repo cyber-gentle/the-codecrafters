@@ -44,6 +44,7 @@ start:
 			fmt.Println("Enter a binary number to ")
 
 		case 2:
+		case2Number:
 			fmt.Println("Enter an HexaDecimal Number to convert to Decimal")
 			number, _ := reader.ReadString('\n')
 			number = strings.TrimSpace(number)
