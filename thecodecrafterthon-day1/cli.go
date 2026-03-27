@@ -34,7 +34,7 @@ func main() {
 			fmt.Printf("%d + %d is = %d\n", num1, num2, result)
 			fmt.Println()
 
-			fmt.Print("Do you want add another set of numbers?\n 1. Yes\n 2. No\n")
+			fmt.Print("Do you want add another set of numbers?\n 1. Yes, I want to.\n 2. No, Quit.\n")
 			fmt.Print("Pick your choice: ")
 			fmt.Scanln(&p_choice)
 
@@ -54,7 +54,7 @@ func main() {
 			result := num1 - num2
 			fmt.Printf("%d - %d is = %d\n", num1, num2, result)
 
-			fmt.Print("Do you want subtract another set of numbers?\n 1. Yes\n 2. No\n")
+			fmt.Print("Do you want subtract another set of numbers?\n 1. Yes, I want to.\n 2. No, Quit.\n")
 			fmt.Print("Pick your choice: ")
 			fmt.Scanln(&p_choice)
 
@@ -74,7 +74,7 @@ func main() {
 			result := num1 * num2
 			fmt.Printf("%d x %d is = %d\n", num1, num2, result)
 
-			fmt.Print("Do you want multiply another set of numbers?\n 1. Yes\n 2. No\n")
+			fmt.Print("Do you want multiply another set of numbers?\n 1. Yes, I want to.\n 2. No, Quit.\n")
 			fmt.Print("Pick your choice: ")
 			fmt.Scanln(&p_choice)
 
@@ -98,7 +98,7 @@ func main() {
 			result := num1 / num2
 			fmt.Printf("%d ÷ %d is = %d\n", num1, num2, result)
 
-			fmt.Print("Do you want divide another set of numbers?\n 1. Yes\n 2. No\n")
+			fmt.Print("Do you want divide another set of numbers?\n 1. Yes, I want to.\n 2. No, Quit.\n")
 			fmt.Print("Pick your choice: ")
 			fmt.Scanln(&p_choice)
 
