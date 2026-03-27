@@ -11,6 +11,7 @@ import (
 var (
 	num1, num2 float64 // integer storer
 	p_choice   int     // proceed choice whether to do another calculation or not
+	// op_c // operation choice
 )
 
 func main() {
