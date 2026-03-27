@@ -17,7 +17,7 @@ func main() {
 
 	reader := bufio.NewReader(os.Stdin)
 start:
-	fmt.Printf("CHOOSE AN OPERATION TO EXECUTE\n 1. Addition\n 2. Subtraction\n 3. Multiplication\n 4. Division\n 5. Exit\n Type %q for more info\n", "HELP")
+	fmt.Printf("CHOOSE AN OPERATION TO EXECUTE\n 1. Addition\n 2. Subtraction\n 3. Multiplication\n 4. Division\n 5. Exit\n 6. More info\n")
 	fmt.Print("Select an operation to continue: ")
 	op_c, _ := reader.ReadString('\n')
 	op_c = strings.TrimSpace(op_c)
@@ -168,15 +168,16 @@ start:
 			fmt.Println("Exiting...")
 			return
 
+		case 6:
+			fmt.Println()
+			fmt.Println(" Addition: add your input together\n Subtraction: Minus a number from another\n Multiplication: Multiply numbers to get result\n Division: Divides a number by the other\n ")
+			return
+
 		default:
 			fmt.Println("Enter a valid operation: ")
 			goto start
 
 		}
-		if op_c == "HELP" {
-			fmt.Println()
-			fmt.Println(" Addition: add your input together\n Subtraction: Minus a number from another\n Multiplication: Multiply numbers to get result\n Division: Divides a number by the other\n ")
-			return
-		}
+
 	}
 }
