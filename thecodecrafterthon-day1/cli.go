@@ -168,6 +168,10 @@ start:
 			fmt.Println("Exiting...")
 			return
 
+		default:
+			fmt.Println("Enter a valid operation: ")
+			goto start
+
 		}
 		if op_c == "HELP" {
 			fmt.Println()
