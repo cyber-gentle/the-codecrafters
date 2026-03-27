@@ -172,7 +172,7 @@ start:
 		case 6:
 			fmt.Println()
 			fmt.Println(" Addition: add your input together\n Subtraction: Minus a number from another\n Multiplication: Multiply numbers to get result\n Division: Divides a number by the other\n ")
-			return
+			goto start
 
 		default:
 			fmt.Println("Enter a valid operation: ")
