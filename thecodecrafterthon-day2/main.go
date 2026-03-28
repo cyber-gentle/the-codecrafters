@@ -25,7 +25,11 @@ func hexToDecimal(s string, base int) (int64, error) {
 }
 
 func binToDecimal(n string, base int) (int64, error) {
-	return strconv.ParseInt(n, base, 64)
+	bin, err := strconv.ParseInt(n, base, 64)
+	if err != nil {
+		fmt.Println("Invalid Binary number:", err)
+	}
+	return bin, err
 }
 
 func main() {
@@ -101,6 +105,4 @@ start:
 		}
 	}
 
-	// fmt.Println(hexToDecimal("1E", 16))
-	// fmt.Println(binToDecimal("1001", 2))
 }
