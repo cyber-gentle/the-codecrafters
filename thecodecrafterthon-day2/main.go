@@ -10,11 +10,11 @@ import (
 
 var ()
 
-// func decimalToOthers(s string, base int) (float64, error) {
-// 	conv, _ := strconv.Atoi(s)
-// 	conv = float64(conv)
-// 	return strconv.FormatInt(conv, base, 64)
-// }
+ func decimalToOthers(s string, base int) (float64, error) {
+	conv, _ := strconv.Atoi(s)
+	conv = float64(conv)
+	return strconv.FormatInt(conv, base, 64)
+}
 
 func hexToDecimal(s string, base int) (int64, error) {
 	dec, err := strconv.ParseInt(s, base, 64)
@@ -45,7 +45,7 @@ start:
 	for {
 		switch c_choice {
 		case 1:
-			fmt.Println("Enter a binary number to ")
+			fmt.Println("Enter a Decimal Nmuber to convert to Binary and HexaDecimal ")
 
 		case 2:
 		case2Start:
