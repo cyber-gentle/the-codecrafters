@@ -19,7 +19,7 @@ var ()
 func hexToDecimal(s string, base int) (int64, error) {
 	dec, err := strconv.ParseInt(s, base, 64)
 	if err != nil {
-		fmt.Println("Invalid Hexadecimal number:", err)
+		fmt.Println("Invalid Hexadecimal number.")
 	}
 	return dec, err
 }
@@ -27,7 +27,7 @@ func hexToDecimal(s string, base int) (int64, error) {
 func binToDecimal(n string, base int) (int64, error) {
 	bin, err := strconv.ParseInt(n, base, 64)
 	if err != nil {
-		fmt.Println("Invalid Binary number:", err)
+		fmt.Println("Invalid Binary number.")
 	}
 	return bin, err
 }
@@ -76,6 +76,7 @@ start:
 			}
 
 		case 3:
+			case3Start:
 			fmt.Println()
 			fmt.Print("Enter a valid Binary Number to convert to Decimal: ")
 			number, _ := reader.ReadString('\n')
@@ -83,12 +84,17 @@ start:
 
 			base := 2
 			fmt.Println(binToDecimal(number, base))
+			goto case3Start
 
 			fmt.Println()
 			fmt.Print("Do you have another Binary number to convert\n 1. Yes\n 2. No, Quit\n 3. Go to Menu\n Select choice here: ")
 			choice, _ := reader.ReadString('\n')
 			choice = strings.TrimSpace(choice)
 			choice_number, _ := strconv.Atoi(choice) // cleaned choice after atoi
+			if choice == "" {
+				fmt.Println("It's an Empty string, Enter a valid Binary number")
+			}
+
 
 			if choice_number == 1 {
 				continue
