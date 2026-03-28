@@ -76,7 +76,7 @@ start:
 			}
 
 		case 3:
-			case3Start:
+			//case3Start:
 			fmt.Println()
 			fmt.Print("Enter a valid Binary Number to convert to Decimal: ")
 			number, _ := reader.ReadString('\n')
@@ -84,7 +84,7 @@ start:
 
 			base := 2
 			fmt.Println(binToDecimal(number, base))
-			goto case3Start
+			//goto case3Start
 
 			fmt.Println()
 			fmt.Print("Do you have another Binary number to convert\n 1. Yes\n 2. No, Quit\n 3. Go to Menu\n Select choice here: ")
