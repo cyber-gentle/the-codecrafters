@@ -43,10 +43,10 @@ start:
 				fmt.Println("Enter a number and not alphabet")
 				goto case1SecondNumber
 			}
-			result := float64(num1) + float64(num2)
-			//fmt.Printf("%f + %f is = %f\n", num1, num2, result)
-			fmt.Println(result)
-			fmt.Println()
+			num1 = float64(num1)
+			num2 = float64(num2)
+			result := num1 + num2
+			fmt.Printf("The sum of %g + %g is %g\n \n", num1, num2, result)
 
 			fmt.Print("Do you want add another set of numbers?\n 1. Yes, I want to.\n 2. No, Quit.\n 3. Go to Menu\n")
 			fmt.Print("Pick your choice: ")
@@ -77,9 +77,10 @@ start:
 				fmt.Println("Enter a number and not alphabet")
 				goto case2SecondNumber
 			}
-			result := float64(num1) - float64(num2)
-			fmt.Println(result)
-			//fmt.Printf("%f - %f is = %f\n", num1, num2, result)
+			num1 = float64(num1)
+			num2 = float64(num2)
+			result := num1 - num2
+			fmt.Printf("The difference of %g - %g is %g\n \n", num1, num2, result)
 
 			fmt.Print("Do you want subtract another set of numbers?\n 1. Yes, I want to.\n 2. No, Quit.\n 3. Go to Menu\n")
 			fmt.Print("Pick your choice: ")
@@ -110,9 +111,10 @@ start:
 				fmt.Println("Enter a number and not alphabet")
 				goto case3SecondNumber
 			}
-			result := float64(num1) * float64(num2)
-			//fmt.Printf("%d x %d is = %d\n", num1, num2, result)
-			fmt.Println(result)
+			num1 = float64(num1)
+			num2 = float64(num2)
+			result := num1 * num2
+			fmt.Printf("The product of %g and %g is %g\n \n", num1, num2, result)
 
 			fmt.Print("Do you want multiply another set of numbers?\n 1. Yes, I want to.\n 2. No, Quit.\n 3. Go to Menu\n")
 			fmt.Print("Pick your choice: ")
@@ -147,9 +149,10 @@ start:
 				fmt.Println("Divisor can't be zero")
 				goto case4SecondNumber
 			}
-			result := float64(num1) / float64(num2)
-			//fmt.Printf("%d ÷ %d is = %d\n", num1, num2, result)
-			fmt.Println(result)
+			num1 = float64(num1)
+			num2 = float64(num2)
+			result := num1 / num2
+			fmt.Printf("The qoutient of %g and %g is %g\n \n", num1, num2, result)
 
 			fmt.Print("Do you want divide another set of numbers?\n 1. Yes, I want to.\n 2. No, Quit.\n 3. Go to Menu\n")
 			fmt.Print("Pick your choice: ")
