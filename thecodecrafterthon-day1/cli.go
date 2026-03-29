@@ -46,7 +46,7 @@ start:
 			num1 = float64(num1)
 			num2 = float64(num2)
 			result := num1 + num2
-			fmt.Printf("The sum of %g + %g is %g\n \n", num1, num2, result)
+			fmt.Printf("The sum of %g and %g is %g\n \n", num1, num2, result)
 
 			fmt.Print("Do you want add another set of numbers?\n 1. Yes, I want to.\n 2. No, Quit.\n 3. Go to Menu\n")
 			fmt.Print("Pick your choice: ")
@@ -80,7 +80,7 @@ start:
 			num1 = float64(num1)
 			num2 = float64(num2)
 			result := num1 - num2
-			fmt.Printf("The difference of %g - %g is %g\n \n", num1, num2, result)
+			fmt.Printf("The difference of %g and %g is %g\n \n", num1, num2, result)
 
 			fmt.Print("Do you want subtract another set of numbers?\n 1. Yes, I want to.\n 2. No, Quit.\n 3. Go to Menu\n")
 			fmt.Print("Pick your choice: ")
