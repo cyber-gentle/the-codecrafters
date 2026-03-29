@@ -28,7 +28,6 @@ start:
 
 		switch op {
 		case 1:
-
 		case1FirstNumber:
 			fmt.Print("Enter first number: ")
 			_, err := fmt.Scanln(&num1)
@@ -36,6 +35,7 @@ start:
 				fmt.Print("Enter a number and not alphabet\n \n")
 				goto case1FirstNumber
 			}
+
 		case1SecondNumber:
 			fmt.Print("Enter second number: ")
 			_, err = fmt.Scanln(&num2)
@@ -43,6 +43,7 @@ start:
 				fmt.Print("Enter a number and not alphabet\n \n")
 				goto case1SecondNumber
 			}
+
 			num1 = float64(num1)
 			num2 = float64(num2)
 			result := num1 + num2
@@ -73,6 +74,7 @@ start:
 				fmt.Print("Enter a number and not alphabet\n \n")
 				goto case2FirstNumber
 			}
+
 		case2SecondNumber:
 			fmt.Print("Enter second number: ")
 			_, err = fmt.Scanln(&num2)
@@ -80,6 +82,7 @@ start:
 				fmt.Print("Enter a number and not alphabet\n \n")
 				goto case2SecondNumber
 			}
+
 			num1 = float64(num1)
 			num2 = float64(num2)
 			result := num1 - num2
@@ -110,6 +113,7 @@ start:
 				fmt.Println("Enter a number and not alphabet")
 				goto case3FirstNumber
 			}
+
 		case3SecondNumber:
 			fmt.Print("Enter second number: ")
 			_, err = fmt.Scanln(&num2)
@@ -117,6 +121,7 @@ start:
 				fmt.Println("Enter a number and not alphabet")
 				goto case3SecondNumber
 			}
+
 			num1 = float64(num1)
 			num2 = float64(num2)
 			result := num1 * num2
@@ -147,6 +152,7 @@ start:
 				fmt.Println("Enter a number and not alphabet")
 				goto case4FirstNumber
 			}
+
 		case4SecondNumber:
 			fmt.Print("Enter second number: ")
 			_, err = fmt.Scanln(&num2)
@@ -154,10 +160,12 @@ start:
 				fmt.Println("Enter a number and not alphabet")
 				goto case4SecondNumber
 			}
+
 			if num2 == 0 {
 				fmt.Println("Divisor can't be zero")
 				goto case4SecondNumber
 			}
+
 			num1 = float64(num1)
 			num2 = float64(num2)
 			result := num1 / num2
