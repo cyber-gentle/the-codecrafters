@@ -53,12 +53,15 @@ start:
 			fmt.Scanln(&p_choice)
 
 			if p_choice == 1 {
+				fmt.Println()
 				continue
 			} else if p_choice == 2 {
 				return
 			} else if p_choice == 3 {
+				fmt.Println()
 				goto start
 			} else {
+				fmt.Println()
 				fmt.Println("Choose from the options above")
 			}
 
@@ -80,19 +83,22 @@ start:
 			num1 = float64(num1)
 			num2 = float64(num2)
 			result := num1 - num2
-			fmt.Printf("The difference of %g and %g is %g\n \n", num1, num2, result)
+			fmt.Printf("The difference of %g - %g is %g\n \n", num1, num2, result)
 
 			fmt.Print("Do you want subtract another set of numbers?\n 1. Yes, I want to.\n 2. No, Quit.\n 3. Go to Menu\n")
 			fmt.Print("Pick your choice: ")
 			fmt.Scanln(&p_choice)
 
 			if p_choice == 1 {
+				fmt.Println()
 				continue
 			} else if p_choice == 2 {
 				return
 			} else if p_choice == 3 {
+				fmt.Println()
 				goto start
 			} else {
+				fmt.Println()
 				fmt.Println("Choose from the options above")
 			}
 
@@ -101,14 +107,14 @@ start:
 			fmt.Print("Enter first number: ")
 			_, err := fmt.Scanln(&num1)
 			if err != nil {
-				fmt.Print("Enter a number and not alphabet\n \n")
+				fmt.Println("Enter a number and not alphabet")
 				goto case3FirstNumber
 			}
 		case3SecondNumber:
 			fmt.Print("Enter second number: ")
 			_, err = fmt.Scanln(&num2)
 			if err != nil {
-				fmt.Print("Enter a number and not alphabet\n \n")
+				fmt.Println("Enter a number and not alphabet")
 				goto case3SecondNumber
 			}
 			num1 = float64(num1)
@@ -121,12 +127,15 @@ start:
 			fmt.Scanln(&p_choice)
 
 			if p_choice == 1 {
+				fmt.Println()
 				continue
 			} else if p_choice == 2 {
 				return
 			} else if p_choice == 3 {
+				fmt.Println()
 				goto start
 			} else {
+				fmt.Println()
 				fmt.Println("Choose from the options above")
 			}
 
@@ -135,18 +144,18 @@ start:
 			fmt.Print("Enter first number: ")
 			_, err := fmt.Scanln(&num1)
 			if err != nil {
-				fmt.Print("Enter a number and not alphabet\n \n")
+				fmt.Println("Enter a number and not alphabet")
 				goto case4FirstNumber
 			}
 		case4SecondNumber:
 			fmt.Print("Enter second number: ")
 			_, err = fmt.Scanln(&num2)
 			if err != nil {
-				fmt.Print("Enter a number and not alphabet\n \n")
+				fmt.Println("Enter a number and not alphabet")
 				goto case4SecondNumber
 			}
 			if num2 == 0 {
-				fmt.Print("Divisor can't be zero\n \n")
+				fmt.Println("Divisor can't be zero")
 				goto case4SecondNumber
 			}
 			num1 = float64(num1)
@@ -159,12 +168,15 @@ start:
 			fmt.Scanln(&p_choice)
 
 			if p_choice == 1 {
+				fmt.Println()
 				continue
 			} else if p_choice == 2 {
 				return
 			} else if p_choice == 3 {
+				fmt.Println()
 				goto start
 			} else {
+				fmt.Println()
 				fmt.Println("Choose from the options above")
 			}
 
@@ -178,8 +190,7 @@ start:
 			goto start
 
 		default:
-			fmt.Println("Enter a valid operation: ")
-			fmt.Println()
+			fmt.Print("Enter a valid operation: \n \n")
 			goto start
 
 		}
