@@ -33,20 +33,20 @@ start:
 			fmt.Print("Enter first number: ")
 			_, err := fmt.Scanln(&num1)
 			if err != nil {
-				fmt.Println("Enter a number and not alphabet")
+				fmt.Print("Enter a number and not alphabet\n \n")
 				goto case1FirstNumber
 			}
 		case1SecondNumber:
 			fmt.Print("Enter second number: ")
 			_, err = fmt.Scanln(&num2)
 			if err != nil {
-				fmt.Println("Enter a number and not alphabet")
+				fmt.Print("Enter a number and not alphabet\n \n")
 				goto case1SecondNumber
 			}
 			num1 = float64(num1)
 			num2 = float64(num2)
 			result := num1 + num2
-			fmt.Printf("The sum of %g and %g is %g\n \n", num1, num2, result)
+			fmt.Printf("The sum of %g + %g is %g\n \n", num1, num2, result)
 
 			fmt.Print("Do you want add another set of numbers?\n 1. Yes, I want to.\n 2. No, Quit.\n 3. Go to Menu\n")
 			fmt.Print("Pick your choice: ")
@@ -67,14 +67,14 @@ start:
 			fmt.Print("Enter first number: ")
 			_, err := fmt.Scanln(&num1)
 			if err != nil {
-				fmt.Println("Enter a number and not alphabet")
+				fmt.Print("Enter a number and not alphabet\n \n")
 				goto case2FirstNumber
 			}
 		case2SecondNumber:
 			fmt.Print("Enter second number: ")
 			_, err = fmt.Scanln(&num2)
 			if err != nil {
-				fmt.Println("Enter a number and not alphabet")
+				fmt.Print("Enter a number and not alphabet\n \n")
 				goto case2SecondNumber
 			}
 			num1 = float64(num1)
@@ -101,14 +101,14 @@ start:
 			fmt.Print("Enter first number: ")
 			_, err := fmt.Scanln(&num1)
 			if err != nil {
-				fmt.Println("Enter a number and not alphabet")
+				fmt.Print("Enter a number and not alphabet\n \n")
 				goto case3FirstNumber
 			}
 		case3SecondNumber:
 			fmt.Print("Enter second number: ")
 			_, err = fmt.Scanln(&num2)
 			if err != nil {
-				fmt.Println("Enter a number and not alphabet")
+				fmt.Print("Enter a number and not alphabet\n \n")
 				goto case3SecondNumber
 			}
 			num1 = float64(num1)
@@ -135,18 +135,18 @@ start:
 			fmt.Print("Enter first number: ")
 			_, err := fmt.Scanln(&num1)
 			if err != nil {
-				fmt.Println("Enter a number and not alphabet")
+				fmt.Print("Enter a number and not alphabet\n \n")
 				goto case4FirstNumber
 			}
 		case4SecondNumber:
 			fmt.Print("Enter second number: ")
 			_, err = fmt.Scanln(&num2)
 			if err != nil {
-				fmt.Println("Enter a number and not alphabet")
+				fmt.Print("Enter a number and not alphabet\n \n")
 				goto case4SecondNumber
 			}
 			if num2 == 0 {
-				fmt.Println("Divisor can't be zero")
+				fmt.Print("Divisor can't be zero\n \n")
 				goto case4SecondNumber
 			}
 			num1 = float64(num1)
@@ -174,11 +174,12 @@ start:
 
 		case 6:
 			fmt.Println()
-			fmt.Println(" Addition: add your input together\n Subtraction: Minus a number from another\n Multiplication: Multiply numbers to get result\n Division: Divides a number by the other\n ")
+			fmt.Print(" Addition: add your input together\n Subtraction: Minus a number from another\n Multiplication: Multiply numbers to get result\n Division: Divides a number by the other\n \n ")
 			goto start
 
 		default:
 			fmt.Println("Enter a valid operation: ")
+			fmt.Println()
 			goto start
 
 		}
