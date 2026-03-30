@@ -32,7 +32,7 @@ start:
 			fmt.Print("Enter first number: ")
 			_, err := fmt.Scanln(&num1)
 			if err != nil {
-				fmt.Print("Enter a number and not alphabet\n \n")
+				fmt.Print("Enter digit only!\n \n")
 				goto case1FirstNumber
 			}
 
@@ -40,7 +40,7 @@ start:
 			fmt.Print("Enter second number: ")
 			_, err = fmt.Scanln(&num2)
 			if err != nil {
-				fmt.Print("Enter a number and not alphabet\n \n")
+				fmt.Print("Enter digit only!\n \n")
 				goto case1SecondNumber
 			}
 
@@ -71,7 +71,7 @@ start:
 			fmt.Print("Enter first number: ")
 			_, err := fmt.Scanln(&num1)
 			if err != nil {
-				fmt.Print("Enter a number and not alphabet\n \n")
+				fmt.Print("Enter digit only!\n \n")
 				goto case2FirstNumber
 			}
 
@@ -79,7 +79,7 @@ start:
 			fmt.Print("Enter second number: ")
 			_, err = fmt.Scanln(&num2)
 			if err != nil {
-				fmt.Print("Enter a number and not alphabet\n \n")
+				fmt.Print("Enter digit only!\n \n")
 				goto case2SecondNumber
 			}
 
@@ -110,7 +110,7 @@ start:
 			fmt.Print("Enter first number: ")
 			_, err := fmt.Scanln(&num1)
 			if err != nil {
-				fmt.Println("Enter a number and not alphabet")
+				fmt.Println("Enter digit only!")
 				goto case3FirstNumber
 			}
 
@@ -118,7 +118,7 @@ start:
 			fmt.Print("Enter second number: ")
 			_, err = fmt.Scanln(&num2)
 			if err != nil {
-				fmt.Println("Enter a number and not alphabet")
+				fmt.Println("Enter digit only!")
 				goto case3SecondNumber
 			}
 
@@ -149,7 +149,7 @@ start:
 			fmt.Print("Enter first number: ")
 			_, err := fmt.Scanln(&num1)
 			if err != nil {
-				fmt.Println("Enter a number and not alphabet")
+				fmt.Println("Enter digit only!")
 				goto case4FirstNumber
 			}
 
@@ -157,7 +157,7 @@ start:
 			fmt.Print("Enter second number: ")
 			_, err = fmt.Scanln(&num2)
 			if err != nil {
-				fmt.Println("Enter a number and not alphabet")
+				fmt.Println("Enter digit only!")
 				goto case4SecondNumber
 			}
 
