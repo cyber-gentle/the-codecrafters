@@ -10,12 +10,13 @@ import (
 
 var ()
 
-func decimalToOthers(s string, base int) {
+func decimalToOthers(s string, base int) string {
 	val, _ := strconv.ParseInt(s, base, 64)
 	hexaNumber := strconv.FormatInt(val, 16)
 	binNumber := strconv.FormatInt(val, 2)
-	fmt.Println(hexaNumber)
-	fmt.Printf("The converted Decimal is \n Binary: %v \n HexaDecimal: %X ", binNumber, hexaNumber)
+	output, _ := fmt.Printf("The converted Decimal is \n Binary: %v \n HexaDecimal: %v \n \n", binNumber, strings.ToUpper(hexaNumber))
+	return strconv.Itoa(output)
+
 }
 
 func hexToDecimal(s string, base int) int64 {
@@ -52,8 +53,7 @@ start:
 				goto case1Start
 			}
 
-			decimalToOthers("20", 10)
-			//fmt.Printf("The result of Decimal converted to other bases are \n  Binary: %q \n HexaDecimal: %d\n \n", decimalToOthers("20", 10))
+			decimalToOthers(number, 10)
 
 			fmt.Print("Do you have another Decimal number to convert?\n 1. Yes\n 2. No, Quit\n 3. Go to Menu\n Select choice here: ")
 			choice, _ := reader.ReadString('\n')
@@ -141,9 +141,14 @@ start:
 
 		case 4:
 			fmt.Println("Exiting, Goodbye!")
-			return
+
+		default:
+			fmt.Print("Select from the options above\n \n")
+			goto start
 
 		}
+		break
+
 	}
 
 }
