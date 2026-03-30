@@ -7,8 +7,9 @@ package main
 import (
 	"fmt"
 	// "math"
-	"strconv"
+	//"strconv"
 	"strings"
+	"unicode"
 )
 
 // func main() {
@@ -88,65 +89,121 @@ import (
 // 	}
 // }
 
-func main() {
-	var hex, dec, bin string
+// func main() {
+// 	var hex, dec, bin string
 
-	var base int
-start:
-	fmt.Println("1: Dec")
-	fmt.Println("2: Hex")
-	fmt.Println("3: Bin")
-	fmt.Println("4: Exit")
-	fmt.Scanln(&base)
+// 	var base int
+// start:
+// 	fmt.Println("1: Dec")
+// 	fmt.Println("2: Hex")
+// 	fmt.Println("3: Bin")
+// 	fmt.Println("4: Exit")
+// 	fmt.Scanln(&base)
 
-	for {
-		switch base {
-		case 1:
-			fmt.Print("ENTER DEC NUMBER: ")
-			fmt.Scanln(&dec)
+// 	for {
+// 		switch base {
+// 		case 1:
+// 			fmt.Print("ENTER DEC NUMBER: ")
+// 			fmt.Scanln(&dec)
 
-			dec, err := strconv.ParseInt(dec, 10, 64)
-			if err != nil {
-				fmt.Println("Invalid dec")
-			}
-			hexN := strconv.FormatInt(dec, 16)
-			binN := strconv.FormatInt(dec, 2)
-			fmt.Printf("HexaDecimal: %v\n", strings.ToUpper(hexN))
-			fmt.Printf("Binary: %v\n", binN)
-			continue
+// 			dec, err := strconv.ParseInt(dec, 10, 64)
+// 			if err != nil {
+// 				fmt.Println("Invalid dec")
+// 			}
+// 			hexN := strconv.FormatInt(dec, 16)
+// 			binN := strconv.FormatInt(dec, 2)
+// 			fmt.Printf("HexaDecimal: %v\n", strings.ToUpper(hexN))
+// 			fmt.Printf("Binary: %v\n", binN)
+// 			continue
 
-		case 2:
+// 		case 2:
 
-			fmt.Print("Enter Number: ")
-			fmt.Scanln(&hex)
-			dec, err := strconv.ParseInt(hex, 16, 64)
-			if err != nil {
-				fmt.Println("Invalid Hex")
-			}
-			fmt.Println(dec)
-			continue
+// 			fmt.Print("Enter Number: ")
+// 			fmt.Scanln(&hex)
+// 			dec, err := strconv.ParseInt(hex, 16, 64)
+// 			if err != nil {
+// 				fmt.Println("Invalid Hex")
+// 			}
+// 			fmt.Println(dec)
+// 			continue
 
-		case 3:
+// 		case 3:
 
-			fmt.Print("Enter Number: ")
-			fmt.Scanln(&bin)
+// 			fmt.Print("Enter Number: ")
+// 			fmt.Scanln(&bin)
 
-			dec, err := strconv.ParseInt(bin, 2, 64)
-			if err != nil {
-				fmt.Println("Invalid Bin")
-			}
-			fmt.Println(dec)
-			continue
+// 			dec, err := strconv.ParseInt(bin, 2, 64)
+// 			if err != nil {
+// 				fmt.Println("Invalid Bin")
+// 			}
+// 			fmt.Println(dec)
+// 			continue
 
-		case 4:
-			fmt.Println("Exiting...")
-			return
+// 		case 4:
+// 			fmt.Println("Exiting...")
+// 			return
 
-		default:
-			fmt.Println("Invalid Option")
-			fmt.Println("Choose A Valid Number")
-			goto start
+// 		default:
+// 			fmt.Println("Invalid Option")
+// 			fmt.Println("Choose A Valid Number")
+// 			goto start
+// 		}
+
+// 	}
+// }
+
+
+func reverse(word string)string{
+	words := strings.Fields(word)
+	for i, word := range words{
+		runes := []rune(word)
+		for l, r := 0, len(word)-1; l < r; l , r = l+1,r-1{
+			runes[r], runes[l] = runes[l], runes[r]
 		}
-
+		words[i] = string(runes)
 	}
+
+	return strings.Join(words," ")
+	
 }
+
+func snakeCase(word string)string{
+	var result strings.Builder
+
+		for _, ch := range word{
+			if unicode.IsLetter(ch) || unicode.IsDigit(ch) || unicode.IsSpace(ch) || ch == '_'{
+				if unicode.IsLetter(ch){
+					result.WriteRune(unicode.ToLower(ch))
+				}else{
+					result.WriteRune(ch)
+				}
+			}
+		}
+		word = result.String()
+		word = strings.Join(strings.Fields(word), "_")
+		return word
+		
+	}
+
+func title(word string)string{
+	word = strings.ToLower(word)
+	return strings.Title(word)
+}
+
+var smallwords = []string{"an","of"}
+
+func checkSmall(word string)bool{
+	for _, w := range smallwords{
+		if w == word {
+			return  true
+		}
+	}
+	return false
+}
+
+func main(){
+	fmt.Println(reverse("Lagos Nigeria"))
+	fmt.Println(snakeCase("Alert! Level 5 detected."))
+	fmt.Println(title("michael SAMUEL"))
+}
+
