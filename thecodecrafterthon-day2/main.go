@@ -8,7 +8,9 @@ import (
 	"strings"
 )
 
-var ()
+var (
+	number int
+)
 
 func decimalToOthers(s string, base int) string {
 	val, _ := strconv.ParseInt(s, base, 64)
@@ -38,14 +40,18 @@ start:
 	choice, _ := reader.ReadString('\n')
 	choice = strings.TrimSpace(choice)
 	c_choice, _ := strconv.Atoi(choice) // c_choice stands for cleaned choice after Atoi
+	fmt.Println()
 
 	for {
 		switch c_choice {
 		case 1:
 		case1Start:
 			fmt.Print("Enter a valid Decimal Number to convert to HexaDecimal and Binary: ")
-			number, _ := reader.ReadString('\n')
+			number, err := reader.ReadString('\n')
 			number = strings.TrimSpace(number)
+			if err != nil {
+				fmt.Println("Enter a valid Decimal Number")
+			}
 
 			if number == "" {
 				fmt.Println()
@@ -84,9 +90,8 @@ start:
 			}
 
 			base := 16
-			fmt.Printf("The Decimal result of %q base %d is %d\n", number, base, hexToDecimal(number, base))
+			fmt.Printf("The Decimal result of %q base %d is %d\n \n", number, base, hexToDecimal(number, base))
 
-			fmt.Println()
 			fmt.Print("Do you have another HexaDecimal number to convert?\n 1. Yes\n 2. No, Quit\n 3. Go to Menu\n Select choice here: ")
 			choice, _ := reader.ReadString('\n')
 			choice = strings.TrimSpace(choice)
