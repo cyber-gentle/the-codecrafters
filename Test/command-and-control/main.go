@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"strconv"
 	"strings"
 )
 
@@ -12,7 +13,9 @@ func help() {
 	fmt.Print("THE CALCULATOR: \n  Use for Arithmetic operations.\n  Type 'calc' to execute the calculator.  \n \n")
 	fmt.Print("THE BASE CONVERTER: \n  Used to convert from one base to another. \n  Type 'base' to execute the base converter. \n \n")
 	fmt.Print("THE STRING TRANSFORMER: \n  Used for transformation of strings. \n  Type 'str' to execute string transformer \n \n")
-	fmt.Print("HISTORY:  \n  Show")
+	fmt.Print("HISTORY:  \n  Show the last 10 executed command\n \n")
+	fmt.Print("Exit: \n")
+	fmt.Print("Exit the program.\n \n \n \n")
 
 }
 
@@ -20,13 +23,70 @@ func calculator() {
 	fmt.Println("WELCOME TO SENTINEL'S CALCULATOR")
 	fmt.Println("")
 
+	// 	scanner.Scan()
+	// input := scanner.Text()
+	// input = strings.ToLower(input)
+	// user_input := strings.Fields(input)
+	// user_operator := user_input[0]
+	// user_num1, err := strconv.Atoi(user_input[1])
+	// 	if err != nil {
+	// 		Invalid
+	// 	}
+	// user_Num2, err := strconv.Atoi(user_input[2])
+	// 	if err != nil {
+
+	// 	}
+
 }
 
 func baseConverter() {
-	fmt.Println("WELCOME TO SENTINEL'S BASE CONVERTER")
-	fmt.Print("Enter the base to convert from followed by the number\n e.g dec 255\n bin 101\n hex 1F\n")
+	scanner := bufio.NewScanner(os.Stdin)
 
-	fmt.Println("")
+start:
+	fmt.Println(" ════════════WELCOME TO SENTINEL'S BASE CONVERTER════════════")
+	fmt.Print(" Enter the base to convert from followed by the number\n E.g dec 255, bin 101, hex 1F.\n Enter 'Go to Menu' to Return to SENTINEL COMMAND AND CONTROL MENU\n  \n")
+
+	fmt.Print("Type Here: ")
+
+	scanner.Scan()
+	input := scanner.Text()
+	input = strings.ToLower(input)
+	user_input := strings.Fields(input)
+	input_base := user_input[0]
+	number := user_input[1]
+
+	for {
+		switch input_base {
+		case "dec":
+			decimal_value, err := strconv.ParseInt(number, 10, 64)
+			if err != nil {
+				fmt.Print("Invalid Decimal Number\n \n")
+				goto start
+			}
+			bin_Number := strconv.FormatInt(decimal_value, 2)
+			hex_Number := strings.ToUpper(strconv.FormatInt(decimal_value, 16))
+
+			fmt.Printf(" ✦ Binary : %v \n ✦ Hex    : %v\n \n", bin_Number, hex_Number)
+			goto start
+
+		case "bin":
+			bin_Number, err := strconv.ParseInt(number, 10, 64)
+			if err != nil {
+				fmt.Print("Invalid Binary Number\n \n")
+				goto start
+			}
+
+			fmt.Printf(" ✦ Binary : %v \n \n",bin_Number)
+			goto start
+
+		case "go to menu":
+			fmt.Print("Returning to Menu\n \n")
+			continue
+			//return
+
+		}
+		break
+	}
 
 }
 
@@ -48,6 +108,7 @@ start:
 	scanner.Scan()
 	input := scanner.Text()
 	input = strings.ToLower(input)
+	fmt.Println()
 
 	for {
 
@@ -57,8 +118,8 @@ start:
 			//goto start
 
 		case "base":
-			// baseConverter()
-			// goto start
+			baseConverter()
+			goto start
 
 		case "str":
 			// stringTransformer()
@@ -80,7 +141,7 @@ start:
 			break
 
 		default:
-			fmt.Print("Type the correct command \n \n")
+			fmt.Print("Enter a valid command or seek help.\n \n")
 			goto start
 		}
 		break
