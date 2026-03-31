@@ -150,7 +150,7 @@ func calculator() {
 			result := a + b
 			fmt.Println(result)
 
-			entry := fmt.Sprintf("%f + %f = %f", a, b, result)
+			entry := fmt.Sprintf("%g + %g = %g", a, b, result)
 			history[index%5] = entry
 			index++
 			lastResult = result
@@ -160,7 +160,7 @@ func calculator() {
 			result := a - b
 			fmt.Println(result)
 
-			entry := fmt.Sprintf("%f - %f = %f", a, b, result)
+			entry := fmt.Sprintf("%g - %g = %g", a, b, result)
 			history[index%5] = entry
 			index++
 			lastResult = result
@@ -170,7 +170,7 @@ func calculator() {
 			result := a * b
 			fmt.Println(result)
 
-			entry := fmt.Sprintf("%f * %f = %f", a, b, result)
+			entry := fmt.Sprintf("%g * %g = %g", a, b, result)
 			history[index%5] = entry
 			index++
 			lastResult = result
@@ -183,7 +183,7 @@ func calculator() {
 			result := a / b
 			fmt.Println(result)
 
-			entry := fmt.Sprintf("%f / %f = %f", a, b, result)
+			entry := fmt.Sprintf("%g / %g = %g", a, b, result)
 			history[index%5] = entry
 			index++
 			lastResult = result
@@ -203,7 +203,7 @@ func calculator() {
 			result := math.Pow(a, b)
 			fmt.Println(result)
 
-			entry := fmt.Sprintf("%f ^ %f = %f", a, b, result)
+			entry := fmt.Sprintf("%g ^ %g = %g", a, b, result)
 			history[index%5] = entry
 			index++
 			lastResult = result
