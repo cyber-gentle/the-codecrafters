@@ -138,7 +138,7 @@ start:
 		case "exit":
 			fmt.Println("Exiting...")
 			fmt.Print("Goodbye!\n \n")
-			break
+			return
 
 		default:
 			fmt.Print("Enter a valid command or seek help.\n \n")
