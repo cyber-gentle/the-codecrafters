@@ -8,7 +8,24 @@ import (
 )
 
 func help() {
-	fmt.Print("THE CALCULATOR: \n  Use for Arithmetic operations.\n  Type 'calc' to execute the calculator.  \n \n THE BASE CONVERTER: \n  Used to convert from one base to another. \n  Type 'base' to execute the base converter. \n \n The string transformer: \n  Used for transforming strings. \n  Type 'str' to execute string transformer \n \n")
+	fmt.Print("-----------HELP MENU-----------\n \n")
+	fmt.Print("THE CALCULATOR: \n  Use for Arithmetic operations.\n  Type 'calc' to execute the calculator.  \n \n")
+	fmt.Print("THE BASE CONVERTER: \n  Used to convert from one base to another. \n  Type 'base' to execute the base converter. \n \n")
+	fmt.Print("THE STRING TRANSFORMER: \n  Used for transformation of strings. \n  Type 'str' to execute string transformer \n \n")
+	fmt.Print("HISTORY:  \n  Show")
+
+}
+
+func calculator() {
+	fmt.Println("WELCOME TO SENTINEL'S CALCULATOR")
+	fmt.Println("")
+
+}
+
+func baseConverter() {
+	fmt.Println("WELCOME TO SENTINEL'S BASE CONVERTER")
+
+	fmt.Println("")
 
 }
 
@@ -37,7 +54,6 @@ start:
 		case "calc":
 			//calculator()
 			//goto start
-			fmt.Println(input)
 
 		case "base":
 			// baseConverter()
@@ -49,7 +65,7 @@ start:
 
 		case "help":
 
-			fmt.Println()
+			help()
 			goto start
 
 		case "history":
@@ -58,7 +74,8 @@ start:
 			// goto start
 
 		case "exit":
-			fmt.Print("Goodbye! \nExiting... \n")
+			fmt.Println("Exiting...")
+			fmt.Print("Goodbye!\n \n")
 			break
 
 		default:
