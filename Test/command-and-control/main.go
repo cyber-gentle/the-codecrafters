@@ -24,6 +24,7 @@ func calculator() {
 
 func baseConverter() {
 	fmt.Println("WELCOME TO SENTINEL'S BASE CONVERTER")
+	fmt.Print("Enter the base to convert from followed by the number\n e.g dec 255\n bin 101\n hex 1F\n")
 
 	fmt.Println("")
 
