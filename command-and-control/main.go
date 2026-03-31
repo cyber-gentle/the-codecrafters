@@ -8,10 +8,10 @@ import (
 	"bufio"
 	"fmt"
 	"math"
+	"os"
 	"strconv"
 	"strings"
 	"unicode"
-	"os"
 )
 
 func baseConverter() {
@@ -105,276 +105,280 @@ base:
 }
 
 func calculator() {
-     var history [5]string
-     var index int = 0
-     var lastResult float64
-    for {
-        var a float64
-        var b float64
+	var history [5]string
+	var index int = 0
+	var lastResult float64
+	for {
+		var a float64
+		var b float64
 
-        fmt.Println("...GOPHER'S CALC...")
-    firstNumber:
-        fmt.Println("Input first number")
-        _, err := fmt.Scanln(&a)
-        if err != nil {
-            fmt.Print("Enter digit only!\n")
-            goto firstNumber
-        }
+		fmt.Println("...GOPHER'S CALC...")
+	firstNumber:
+		fmt.Println("Input first number")
+		_, err := fmt.Scanln(&a)
+		if err != nil {
+			fmt.Print("Enter digit only!\n")
+			goto firstNumber
+		}
 
-   secondNumber:
-        fmt.Println("Input second number")
-        fmt.Scanln(&b)
-        if err != nil {
-            fmt.Print("Enter digit only!\n")
-            goto secondNumber
-        }
+	secondNumber:
+		fmt.Println("Input second number")
+		fmt.Scanln(&b)
+		if err != nil {
+			fmt.Print("Enter digit only!\n")
+			goto secondNumber
+		}
 
-        var Operator string
+		var Operator string
 
 		fmt.Println()
-        fmt.Println("add")
-        fmt.Println("sub")
-        fmt.Println("mul")
-        fmt.Println("div")
-        fmt.Println("remainder")
-        fmt.Println("power")
-        fmt.Println("last")
-        fmt.Println("history")
-        fmt.Println("Exit")
+		fmt.Println("add")
+		fmt.Println("sub")
+		fmt.Println("mul")
+		fmt.Println("div")
+		fmt.Println("remainder")
+		fmt.Println("power")
+		fmt.Println("last")
+		fmt.Println("history")
+		fmt.Println("Exit")
 		fmt.Println()
 		fmt.Print("Type: ")
-        fmt.Scanln(&Operator)
+		fmt.Scanln(&Operator)
 
-        switch Operator {
-        case "add":
-            result := a + b
-            fmt.Println(result)
+		switch Operator {
+		case "add":
+			result := a + b
+			fmt.Println(result)
 
-            entry := fmt.Sprintf("%f + %f = %f", a, b, result)
-            history[index%5] = entry
-            index++
-            lastResult = result
-            continue
+			entry := fmt.Sprintf("%f + %f = %f", a, b, result)
+			history[index%5] = entry
+			index++
+			lastResult = result
+			continue
 
-        case "sub":
-            result := a - b
-            fmt.Println(result)
+		case "sub":
+			result := a - b
+			fmt.Println(result)
 
-            entry := fmt.Sprintf("%f - %f = %f", a, b, result)
-            history[index%5] = entry
-            index++
-            lastResult = result
-            continue
+			entry := fmt.Sprintf("%f - %f = %f", a, b, result)
+			history[index%5] = entry
+			index++
+			lastResult = result
+			continue
 
-        case "mul":
-            result := a * b
-            fmt.Println(result)
-            
-            entry := fmt.Sprintf("%f * %f = %f", a, b, result)
-            history[index%5] = entry
-            index++
-            lastResult = result
-            continue
+		case "mul":
+			result := a * b
+			fmt.Println(result)
 
-        case "div":
-            if b == 0 {
-                fmt.Println("Not divisible by zero")
-            }
-            result := a / b
-            fmt.Println(result)
+			entry := fmt.Sprintf("%f * %f = %f", a, b, result)
+			history[index%5] = entry
+			index++
+			lastResult = result
+			continue
 
-            entry := fmt.Sprintf("%f / %f = %f", a, b, result)
-            history[index%5] = entry
-            index++
-            lastResult = result
-            continue
+		case "div":
+			if b == 0 {
+				fmt.Println("Not divisible by zero")
+			}
+			result := a / b
+			fmt.Println(result)
 
-        case "remainder":
-            result := int64(a) % int64(b)
-            fmt.Println(result)
+			entry := fmt.Sprintf("%f / %f = %f", a, b, result)
+			history[index%5] = entry
+			index++
+			lastResult = result
+			continue
 
-            entry := fmt.Sprintf("%d %% %d = %d", int64(a), int64(b), result)
-            history[index%5] = entry
-            index++
-            lastResult = float64(result)
-            continue
+		case "remainder":
+			result := int64(a) % int64(b)
+			fmt.Println(result)
 
-        case "power":
-            result := math.Pow(a, b)
-            fmt.Println(result)
+			entry := fmt.Sprintf("%d %% %d = %d", int64(a), int64(b), result)
+			history[index%5] = entry
+			index++
+			lastResult = float64(result)
+			continue
 
-            entry := fmt.Sprintf("%f ^ %f = %f", a, b, result)
-            history[index%5] = entry
-            index++
-            lastResult = result
-            continue
+		case "power":
+			result := math.Pow(a, b)
+			fmt.Println(result)
 
-        case "last":
-            fmt.Println("Last Result: ", lastResult)
-            continue
+			entry := fmt.Sprintf("%f ^ %f = %f", a, b, result)
+			history[index%5] = entry
+			index++
+			lastResult = result
+			continue
 
-        case "history":
-            fmt.Println("Last 5 Calculationns: ")
-            for i := 0; i < 5; i++ {
-                if history[i] != "" {
-                    fmt.Println(history[i])
-                }
-            }
-            continue
+		case "last":
+			fmt.Println("Last Result: ", lastResult)
+			continue
 
-        case "Exit":
-            fmt.Println("Exiting...")
-            break
+		case "history":
+			fmt.Println("Last 5 Calculationns: ")
+			for i := 0; i < 5; i++ {
+				if history[i] != "" {
+					fmt.Println(history[i])
+				}
+			}
+			continue
 
-        default:
-            fmt.Print("Out of operation range\n", "Choose from the above\n")
-            continue
-        }
-        break
-    }
+		case "Exit":
+			fmt.Println("Exiting...")
+			break
+
+		default:
+			fmt.Print("Out of operation range\n", "Choose from the above\n")
+			continue
+		}
+		break
+	}
 }
 
 func upper(word string) string {
- return strings.ToUpper(word)
+	return strings.ToUpper(word)
 }
 
 func lower(word string) string {
- return strings.ToLower(word)
+	return strings.ToLower(word)
 }
 
 func cap(word string) string {
- words := strings.Fields(word)
+	words := strings.Fields(word)
 
- for i, ch := range words {
-  runes := []rune(strings.ToLower(ch))
-  if len(runes) > 0 {
-   runes[0] = unicode.ToUpper(runes[0])
-  }
-  words[i] = string(runes)
+	for i, ch := range words {
+		runes := []rune(strings.ToLower(ch))
+		if len(runes) > 0 {
+			runes[0] = unicode.ToUpper(runes[0])
+		}
+		words[i] = string(runes)
 
- }
- return strings.Join(words, " ")
+	}
+	return strings.Join(words, " ")
 }
 
 var smallWords = []string{
- "a", "an", "the", "and", "but", "or", "for", "nor",
- "on", "at", "to", "by", "in", "of", "up", "as",
- "is", "yet", "it",
+	"a", "an", "the", "and", "but", "or", "for", "nor",
+	"on", "at", "to", "by", "in", "of", "up", "as",
+	"is", "yet", "it",
 }
 
 func checkSmallWords(word string) bool {
- for _, w := range smallWords {
-  if w == word {
-   return true
-  }
- }
- return false
+	for _, w := range smallWords {
+		if w == word {
+			return true
+		}
+	}
+	return false
 }
 
 func title(word string) string {
- words := strings.Fields(word)
+	words := strings.Fields(word)
 
- for i, w := range words {
-  lower := strings.ToLower(w)
+	for i, w := range words {
+		lower := strings.ToLower(w)
 
-  if i == 0 || !checkSmallWords(lower) {
-   runes := []rune(lower)
-   runes[0] = unicode.ToUpper(runes[0])
-   words[i] = string(runes)
-  } else {
-   words[i] = lower
-  }
- }
+		if i == 0 || !checkSmallWords(lower) {
+			runes := []rune(lower)
+			runes[0] = unicode.ToUpper(runes[0])
+			words[i] = string(runes)
+		} else {
+			words[i] = lower
+		}
+	}
 
- return strings.Join(words, " ")
+	return strings.Join(words, " ")
 }
 
 func snake(word string) string {
- var result strings.Builder
+	var result strings.Builder
 
- for _, ch := range word {
-  if unicode.IsLetter(ch) || unicode.IsDigit(ch) || ch == '_' || unicode.IsSpace(ch) {
-   if unicode.IsLetter(ch) {
-    result.WriteRune(unicode.ToLower(ch))
-   } else {
-    result.WriteRune(ch)
-   }
-  }
- }
+	for _, ch := range word {
+		if unicode.IsLetter(ch) || unicode.IsDigit(ch) || ch == '_' || unicode.IsSpace(ch) {
+			if unicode.IsLetter(ch) {
+				result.WriteRune(unicode.ToLower(ch))
+			} else {
+				result.WriteRune(ch)
+			}
+		}
+	}
 
- word = result.String()
- word = strings.Join(strings.Fields(word), "_")
- return word
+	word = result.String()
+	word = strings.Join(strings.Fields(word), "_")
+	return word
 }
 
 func reverse(word string) string {
- words := strings.Fields(word)
- for i, word := range words {
-  runes := []rune(word)
-  for l, r := 0, len(runes)-1; l < r; l, r = l+1, r-1 {
-   runes[l], runes[r] = runes[r], runes[l]
-  }
-  words[i] = string(runes)
+	words := strings.Fields(word)
+	for i, word := range words {
+		runes := []rune(word)
+		for l, r := 0, len(runes)-1; l < r; l, r = l+1, r-1 {
+			runes[l], runes[r] = runes[r], runes[l]
+		}
+		words[i] = string(runes)
 
- }
- return strings.Join(words, " ")
+	}
+	return strings.Join(words, " ")
 }
 
 func stringTransformer() {
- reader := bufio.NewReader(os.Stdin)
- for {
-  fmt.Println("SENTINEL STRING TRANSFORMER — ONLINE")
+	reader := bufio.NewReader(os.Stdin)
+	for {
+		fmt.Println("SENTINEL STRING TRANSFORMER — ONLINE")
 
-  fmt.Print(">> ")
-  line, _ := reader.ReadString('\n')
-  line = strings.TrimSpace(line)
+		fmt.Print(">> ")
+		line, _ := reader.ReadString('\n')
+		line = strings.TrimSpace(line)
 
-  if line == "" {
-   fmt.Println("Please enter a valid command -- Usage: upper <text>")
-   continue
-  }
+		if line == "" {
+			fmt.Println("Please enter a valid command -- Usage: upper <text>")
+			continue
+		}
 
-  textInput := strings.Fields(line)
-  command := strings.ToLower(textInput[0])
+		textInput := strings.Fields(line)
+		command := strings.ToLower(textInput[0])
 
-  if command == "exit" {
-   fmt.Println("Shutting down String Transformer. Goodbye.")
-   return
-  }
+		if command == "exit" {
+			fmt.Println("Shutting down String Transformer. Goodbye.")
+			return
+		}
 
-  if len(textInput) < 2 {
-   fmt.Printf("No text provided. Usage: %s text\n\n", command)
-   continue
-  }
+		if len(textInput) < 2 {
+			fmt.Printf("No text provided. Usage: %s text\n\n", command)
+			continue
+		}
 
-  text := strings.Join(textInput[1:], " ")
+		text := strings.Join(textInput[1:], " ")
 
-  switch command {
-  case "upper":
-   fmt.Println("→ ", upper(text))
+		switch command {
+		case "upper":
+			fmt.Println("→ ", upper(text))
 
-  case "snake":
-   fmt.Println("→ ", snake(text))
+		case "snake":
+			fmt.Println("→ ", snake(text))
 
-  case "lower":
-   fmt.Println("→ ", lower(text))
+		case "lower":
+			fmt.Println("→ ", lower(text))
 
-  case "reverse":
-   fmt.Println("→ ", reverse(text))
+		case "reverse":
+			fmt.Println("→ ", reverse(text))
 
-  case "cap":
-   fmt.Println("→ ", cap(text))
+		case "cap":
+			fmt.Println("→ ", cap(text))
 
-  case "title":
-   fmt.Println("→ ", title(text))
+		case "title":
+			fmt.Println("→ ", title(text))
 
-  default:
-   fmt.Printf("Unknown command: %q\nValid commands: upper, lower, cap, title, snake, reverse, exit\n", command)
-  }
-  fmt.Println()
- }
+		default:
+			fmt.Printf("Unknown command: %q\nValid commands: upper, lower, cap, title, snake, reverse, exit\n", command)
+		}
+		fmt.Println()
+	}
 }
 
+func history() {
+	fmt.Println()
+	fmt.Println("Working on it")
+}
 
 func main() {
 	scanner := bufio.NewScanner(os.Stdin)
@@ -415,6 +419,9 @@ start:
 			goto start
 
 		case "history":
+			history()
+			fmt.Println()
+			goto start
 
 		case "exit":
 			fmt.Print("Goodbye! \nExiting... \n")
