@@ -35,6 +35,7 @@ start:
 	input_base := user_input[0]
 	number := user_input[1]
 
+
 	for {
 		switch input_base {
 		case "dec":
@@ -73,6 +74,10 @@ start:
 			fmt.Print("Returning to Menu\n \n")
 			continue
 			//return
+
+		default:
+			fmt.Print("Enter a base and a valid number\n \n")
+			goto start
 
 		}
 		break
