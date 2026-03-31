@@ -19,26 +19,6 @@ func help() {
 
 }
 
-func calculator() {
-	fmt.Println("WELCOME TO SENTINEL'S CALCULATOR")
-	fmt.Println("")
-
-	// 	scanner.Scan()
-	// input := scanner.Text()
-	// input = strings.ToLower(input)
-	// user_input := strings.Fields(input)
-	// user_operator := user_input[0]
-	// user_num1, err := strconv.Atoi(user_input[1])
-	// 	if err != nil {
-	// 		Invalid
-	// 	}
-	// user_Num2, err := strconv.Atoi(user_input[2])
-	// 	if err != nil {
-
-	// 	}
-
-}
-
 func baseConverter() {
 	scanner := bufio.NewScanner(os.Stdin)
 
@@ -60,7 +40,7 @@ start:
 		case "dec":
 			decimal_value, err := strconv.ParseInt(number, 10, 64)
 			if err != nil {
-				fmt.Print("Invalid Decimal Number\n \n")
+				fmt.Printf(" %q is not a valid Decimal.\n Enter a valid Decimal Number.\n \n", number)
 				goto start
 			}
 			bin_Number := strconv.FormatInt(decimal_value, 2)
@@ -70,13 +50,23 @@ start:
 			goto start
 
 		case "bin":
-			bin_Number, err := strconv.ParseInt(number, 10, 64)
+			bin_Number, err := strconv.ParseInt(number, 2, 64)
 			if err != nil {
-				fmt.Print("Invalid Binary Number\n \n")
+				fmt.Printf(" %q is not a valid binary.\n Enter a valid Binary Number.\n \n", number)
 				goto start
 			}
 
 			fmt.Printf(" ✦ Binary : %v \n \n",bin_Number)
+			goto start
+
+		case "hex" :
+			hex_Number, err := strconv.ParseInt(number, 16, 64)
+			if err != nil {
+				fmt.Printf(" %q is not a valid hex.\n Enter a valid Hexa-Decimal Number.\n \n", number)
+				goto start
+			}
+
+			fmt.Printf(" ✦ Binary : %v \n \n",hex_Number)
 			goto start
 
 		case "go to menu":
@@ -87,6 +77,27 @@ start:
 		}
 		break
 	}
+
+}
+
+
+func calculator() {
+	fmt.Println("WELCOME TO SENTINEL'S CALCULATOR")
+	fmt.Println("")
+
+	// 	scanner.Scan()
+	// input := scanner.Text()
+	// input = strings.ToLower(input)
+	// user_input := strings.Fields(input)
+	// user_operator := user_input[0]
+	// user_num1, err := strconv.Atoi(user_input[1])
+	// 	if err != nil {
+	// 		Invalid
+	// 	}
+	// user_Num2, err := strconv.Atoi(user_input[2])
+	// 	if err != nil {
+
+	// 	}
 
 }
 
@@ -108,6 +119,7 @@ start:
 	scanner.Scan()
 	input := scanner.Text()
 	input = strings.ToLower(input)
+	input = strings.TrimSpace(input)
 	fmt.Println()
 
 	for {
