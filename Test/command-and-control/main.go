@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
+//	"math"
 	"os"
 	"strconv"
 	"strings"
@@ -234,7 +235,7 @@ func calculator() {
 	fmt.Println("WELCOME TO SENTINEL'S CALCULATOR")
 	fmt.Println("")
 
-	// 	scanner.Scan()
+		// 	scanner.Scan()
 	// input := scanner.Text()
 	// input = strings.ToLower(input)
 	// user_input := strings.Fields(input)
@@ -247,6 +248,136 @@ func calculator() {
 	// 	if err != nil {
 
 	// 	}
+
+	func calculator() {
+	var history [5]string
+	var index int = 0
+	var lastResult float64
+	for {
+		var a float64
+		var b float64
+
+		fmt.Println("...GOPHER'S CALC...")
+	firstNumber:
+		fmt.Println("Input first number")
+		_, err := fmt.Scanln(&a)
+		if err != nil {
+			fmt.Print("Enter digit only!\n")
+			goto firstNumber
+		}
+
+	secondNumber:
+		fmt.Println("Input second number")
+		fmt.Scanln(&b)
+		if err != nil {
+			fmt.Print("Enter digit only!\n")
+			goto secondNumber
+		}
+
+		var Operator string
+
+		fmt.Println()
+		fmt.Println("add")
+		fmt.Println("sub")
+		fmt.Println("mul")
+		fmt.Println("div")
+		fmt.Println("remainder")
+		fmt.Println("power")
+		fmt.Println("last")
+		fmt.Println("history")
+		fmt.Println("Exit")
+		fmt.Println()
+		fmt.Print("Type: ")
+		fmt.Scanln(&Operator)
+
+		switch Operator {
+		case "add":
+			result := a + b
+			fmt.Println(result)
+
+			entry := fmt.Sprintf("%g + %g = %g", a, b, result)
+			history[index%5] = entry
+			index++
+			lastResult = result
+			continue
+
+		case "sub":
+			result := a - b
+			fmt.Println(result)
+
+			entry := fmt.Sprintf("%g - %g = %g", a, b, result)
+			history[index%5] = entry
+			index++
+			lastResult = result
+			continue
+
+		case "mul":
+			result := a * b
+			fmt.Println(result)
+
+			entry := fmt.Sprintf("%g * %g = %g", a, b, result)
+			history[index%5] = entry
+			index++
+			lastResult = result
+			continue
+
+		case "div":
+			if b == 0 {
+				fmt.Println("Not divisible by zero")
+			}
+			result := a / b
+			fmt.Println(result)
+
+			entry := fmt.Sprintf("%g / %g = %g", a, b, result)
+			history[index%5] = entry
+			index++
+			lastResult = result
+			continue
+
+		case "remainder":
+			result := int64(a) % int64(b)
+			fmt.Println(result)
+
+			entry := fmt.Sprintf("%d %% %d = %d", int64(a), int64(b), result)
+			history[index%5] = entry
+			index++
+			lastResult = float64(result)
+			continue
+
+		case "power":
+			result := math.Pow(a, b)
+			fmt.Println(result)
+
+			entry := fmt.Sprintf("%g ^ %g = %g", a, b, result)
+			history[index%5] = entry
+			index++
+			lastResult = result
+			continue
+
+		case "last":
+			fmt.Println("Last Result: ", lastResult)
+			continue
+
+		case "history":
+			fmt.Println("Last 5 Calculationns: ")
+			for i := 0; i < 5; i++ {
+				if history[i] != "" {
+					fmt.Println(history[i])
+				}
+			}
+			continue
+
+		case "Exit":
+			fmt.Println("Exiting...")
+			break
+
+		default:
+			fmt.Print("Out of operation range\n", "Choose from the above\n")
+			continue
+		}
+		break
+	}
+}
 
 }
 
