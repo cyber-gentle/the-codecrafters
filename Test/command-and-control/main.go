@@ -1,9 +1,10 @@
 package main
 
+
 import (
 	"bufio"
 	"fmt"
-//	"math"
+	"math"
 	"os"
 	"strconv"
 	"strings"
@@ -37,7 +38,6 @@ start:
 	input_base := user_input[0]
 	number := user_input[1]
 
-
 	for {
 		switch input_base {
 		case "dec":
@@ -59,17 +59,17 @@ start:
 				goto start
 			}
 
-			fmt.Printf(" ✦ Binary : %v \n \n",bin_Number)
+			fmt.Printf(" ✦ Binary : %v \n \n", bin_Number)
 			goto start
 
-		case "hex" :
+		case "hex":
 			hex_Number, err := strconv.ParseInt(number, 16, 64)
 			if err != nil {
 				fmt.Printf(" %q is not a valid hex.\n Enter a valid Hexa-Decimal Number.\n \n", number)
 				goto start
 			}
 
-			fmt.Printf(" ✦ Binary : %v \n \n",hex_Number)
+			fmt.Printf(" ✦ Binary : %v \n \n", hex_Number)
 			goto start
 
 		case "go to menu":
@@ -230,12 +230,11 @@ func stringTransformer() {
 	}
 }
 
-
 func calculator() {
 	fmt.Println("WELCOME TO SENTINEL'S CALCULATOR")
 	fmt.Println("")
 
-		// 	scanner.Scan()
+	// 	scanner.Scan()
 	// input := scanner.Text()
 	// input = strings.ToLower(input)
 	// user_input := strings.Fields(input)
@@ -249,7 +248,7 @@ func calculator() {
 
 	// 	}
 
-	func calculator() {
+	//func calculator() {
 	var history [5]string
 	var index int = 0
 	var lastResult float64
@@ -377,8 +376,6 @@ func calculator() {
 		}
 		break
 	}
-}
-
 }
 
 func main() {
