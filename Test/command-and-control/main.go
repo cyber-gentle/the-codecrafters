@@ -1,6 +1,5 @@
 package main
 
-
 import (
 	"bufio"
 	"fmt"
@@ -38,6 +37,16 @@ start:
 	input_base := user_input[0]
 	number := user_input[1]
 
+	if input == "" {
+		fmt.Print("Enter base and a valid number of the base\n \n")
+		goto start
+	}
+
+	if len(user_input) > 2 || len(user_input) < 2 {
+		fmt.Print("Invalid base command\n Enter a base and a valid number\n \n")
+		goto start
+	}
+
 	for {
 		switch input_base {
 		case "dec":
@@ -59,17 +68,17 @@ start:
 				goto start
 			}
 
-			fmt.Printf(" ✦ Binary : %v \n \n", bin_Number)
+			fmt.Printf(" ✦ Decimal : %v \n \n", bin_Number)
 			goto start
 
 		case "hex":
 			hex_Number, err := strconv.ParseInt(number, 16, 64)
 			if err != nil {
-				fmt.Printf(" %q is not a valid hex.\n Enter a valid Hexa-Decimal Number.\n \n", number)
+				fmt.Printf(" %q is not a valid hex.\n Enter a valid Hexa-Decimal Number.\n \n", strings.ToUpper(number))
 				goto start
 			}
 
-			fmt.Printf(" ✦ Binary : %v \n \n", hex_Number)
+			fmt.Printf(" ✦ Decimal : %v \n \n", hex_Number)
 			goto start
 
 		case "go to menu":
@@ -231,151 +240,129 @@ func stringTransformer() {
 }
 
 func calculator() {
-	fmt.Println("WELCOME TO SENTINEL'S CALCULATOR")
-	fmt.Println("")
 
-	// 	scanner.Scan()
-	// input := scanner.Text()
-	// input = strings.ToLower(input)
-	// user_input := strings.Fields(input)
-	// user_operator := user_input[0]
-	// user_num1, err := strconv.Atoi(user_input[1])
-	// 	if err != nil {
-	// 		Invalid
-	// 	}
-	// user_Num2, err := strconv.Atoi(user_input[2])
-	// 	if err != nil {
-
-	// 	}
-
-	//func calculator() {
 	var history [5]string
 	var index int = 0
 	var lastResult float64
+
+start:
+	scanner := bufio.NewScanner(os.Stdin)
+	fmt.Println("WELCOME TO SENTINEL'S CALCULATOR")
+	fmt.Print("Enter 'Go to Menu' to Return to SENTINEL COMMAND AND CONTROL MENU\n  \n")
+
+	fmt.Print("Type Here: ")
+
+	scanner.Scan()
+	input := scanner.Text()
+	input = strings.ToLower(input)
+
+	if input == "exit" {
+		fmt.Print(" Shutting down  SENTINEL CONTROL CALCULATOR.\n Goodbye.\n \n")
+		return
+	} else if input == "last" {
+		fmt.Println("Last Result: ", lastResult)
+	} else if input == "history" {
+		fmt.Println("Last 5 Calculations: ")
+		for i := 0; i < 5; i++ {
+			if history[i] != "" {
+				fmt.Println(history[i])
+				fmt.Println()
+			}
+		}
+		goto start
+	}
+
+	user_input := strings.Fields(input)
+	user_operator := user_input[0]
+	user_operator = strings.ToLower(user_operator)
+
+	user_Num1, err := strconv.Atoi(user_input[1])
+	if err != nil {
+		fmt.Print("Enter Digit Only!\n \n")
+	}
+	user_Num2, err := strconv.Atoi(user_input[2])
+	if err != nil {
+		fmt.Print("Enter Digit Only!\n \n")
+	}
+
 	for {
-		var a float64
-		var b float64
 
-		fmt.Println("...GOPHER'S CALC...")
-	firstNumber:
-		fmt.Println("Input first number")
-		_, err := fmt.Scanln(&a)
-		if err != nil {
-			fmt.Print("Enter digit only!\n")
-			goto firstNumber
-		}
+		num1 := float64(user_Num1)
+		num2 := float64(user_Num2)
 
-	secondNumber:
-		fmt.Println("Input second number")
-		fmt.Scanln(&b)
-		if err != nil {
-			fmt.Print("Enter digit only!\n")
-			goto secondNumber
-		}
-
-		var Operator string
-
-		fmt.Println()
-		fmt.Println("add")
-		fmt.Println("sub")
-		fmt.Println("mul")
-		fmt.Println("div")
-		fmt.Println("remainder")
-		fmt.Println("power")
-		fmt.Println("last")
-		fmt.Println("history")
-		fmt.Println("Exit")
-		fmt.Println()
-		fmt.Print("Type: ")
-		fmt.Scanln(&Operator)
-
-		switch Operator {
+		switch user_operator {
 		case "add":
-			result := a + b
-			fmt.Println(result)
+			result := num1 + num2
+			fmt.Printf("✦ Result: %g\n \n", result)
 
-			entry := fmt.Sprintf("%g + %g = %g", a, b, result)
+			entry := fmt.Sprintf("%s %g  %g = %g", user_operator, num1, num2, result)
 			history[index%5] = entry
 			index++
 			lastResult = result
-			continue
+			goto start
 
 		case "sub":
-			result := a - b
-			fmt.Println(result)
+			result := num1 - num2
+			fmt.Printf("✦ Result: %g\n \n", result)
 
-			entry := fmt.Sprintf("%g - %g = %g", a, b, result)
+			entry := fmt.Sprintf("%s %g  %g = %g", user_operator, num1, num2, result)
 			history[index%5] = entry
 			index++
 			lastResult = result
-			continue
+			goto start
 
 		case "mul":
-			result := a * b
-			fmt.Println(result)
+			result := num1 * num2
+			fmt.Printf("✦ Result: %g\n \n", result)
 
-			entry := fmt.Sprintf("%g * %g = %g", a, b, result)
+			entry := fmt.Sprintf("%s %g  %g = %g", user_operator, num1, num2, result)
 			history[index%5] = entry
 			index++
 			lastResult = result
-			continue
+			goto start
 
 		case "div":
-			if b == 0 {
-				fmt.Println("Not divisible by zero")
+			if user_Num2 == 0 {
+				fmt.Print("Not divisible by zero\n \n")
+				goto start
 			}
-			result := a / b
-			fmt.Println(result)
 
-			entry := fmt.Sprintf("%g / %g = %g", a, b, result)
+			result := num1 / num2
+			fmt.Printf("✦ Result: %g\n \n", result)
+
+			entry := fmt.Sprintf("%s %g  %g = %g", user_operator, num1, num2, result)
 			history[index%5] = entry
 			index++
 			lastResult = result
-			continue
+			goto start
 
-		case "remainder":
-			result := int64(a) % int64(b)
-			fmt.Println(result)
+		case "mod":
+			result := int64(num1) % int64(num2)
+			fmt.Printf("✦ Result: %d\n \n", result)
 
-			entry := fmt.Sprintf("%d %% %d = %d", int64(a), int64(b), result)
+			entry := fmt.Sprintf("%s %g  %g = %d", user_operator, num1, num2, result)
 			history[index%5] = entry
 			index++
 			lastResult = float64(result)
-			continue
+			goto start
 
-		case "power":
-			result := math.Pow(a, b)
-			fmt.Println(result)
+		case "pow":
+			result := math.Pow(num1, num2)
+			fmt.Printf("✦ Result: %g\n \n", result)
 
-			entry := fmt.Sprintf("%g ^ %g = %g", a, b, result)
+			entry := fmt.Sprintf("%s %g  %g = %g", user_operator, num1, num2, result)
 			history[index%5] = entry
 			index++
 			lastResult = result
-			continue
-
-		case "last":
-			fmt.Println("Last Result: ", lastResult)
-			continue
-
-		case "history":
-			fmt.Println("Last 5 Calculationns: ")
-			for i := 0; i < 5; i++ {
-				if history[i] != "" {
-					fmt.Println(history[i])
-				}
-			}
-			continue
-
-		case "Exit":
-			fmt.Println("Exiting...")
-			break
+			goto start
 
 		default:
-			fmt.Print("Out of operation range\n", "Choose from the above\n")
-			continue
+			fmt.Print("Out of operation range\n", "Enter a valid command \n")
+			goto start
 		}
-		break
+
 	}
+
 }
 
 func main() {
@@ -403,8 +390,8 @@ start:
 
 		switch input {
 		case "calc":
-			//calculator()
-			//goto start
+			calculator()
+			goto start
 
 		case "base":
 			baseConverter()
