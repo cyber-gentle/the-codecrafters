@@ -1,6 +1,6 @@
 // // CodeCrafters — Hackathon 002
 // // Squad: Gophers
-// // Members: David Abraham, Obeko Eunice, Ugwu Chioma, Michael Bulus, Emmanuel Eliagwu, Akatu Worthy, Samuel Jireh
+// // Members: David Abraham, Obeko Eunice, Ugwu Chioma, Michael Bulus, Emmanuel Elaigwu, Akatu Worthy, Samuel Jireh, Alexander Ogwu, Eyikwodani clementina
 
 package main
 
@@ -380,7 +380,7 @@ func main() {
 	scanner := bufio.NewScanner(os.Stdin)
 
 start:
-	fmt.Print("════════════════════════════════════════════════\n  SENTINEL — COMMAND & CONTROL CONSOLE\n     All systems nominal. Type 'help' to begin.\n════════════════════════════════════════════════\nC&C>\n \n")
+	fmt.Print("════════════════════════════════════════════════\n  THE GOPHER'S SENTINEL — COMMAND & CONTROL CONSOLE\n     All systems nominal. Type 'help' to begin.\n════════════════════════════════════════════════\nC&C>\n \n")
 	fmt.Println("     calc   <command>   → the calculator")
 	fmt.Println("     base   <command>   → the base converter")
 	fmt.Println("     str    <command>   → the string transformer")
@@ -409,6 +409,7 @@ start:
 			goto start
 
 		case "help":
+
 			fmt.Println()
 			fmt.Print("The calculator: \n  Used for arithemetic problems.\n  Type 'calc' to execute the calculator.  \n \n The base converter: \n  Used to convert from one base to another. \n  Type 'base' to execute the base converter. \n \n The string transformer: \n  Used for transforming strings. \n  Type 'str' to execute string transformer \n \n")
 			goto start
@@ -418,6 +419,10 @@ start:
 		case "exit":
 			fmt.Print("Goodbye! \nExiting... \n")
 			break
+
+		default:
+			fmt.Print("Type the correct command \n \n")
+			goto start
 		}
 		break
 	}
