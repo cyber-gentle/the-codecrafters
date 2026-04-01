@@ -69,10 +69,7 @@ start:
 				goto case1Start
 			}
 
-			output, err := decimalToOthers(number, 10)
-			if err != nil {
-				fmt.Print("Enter a valid Binary digit\n \n")
-			}
+			output, _ := decimalToOthers(number, 10)
 			fmt.Println(output)
 
 			fmt.Print("Do you have another Decimal number to convert?\n 1. Yes\n 2. No, Quit\n 3. Go to Menu\n Select choice here: ")
@@ -104,8 +101,9 @@ start:
 			}
 
 			base := 16
-			fmt.Println(hexToDecimal(number, base))
-			//fmt.Printf("The Decimal result of %q base %d is %d\n \n", number, base, hexToDecimal(number, base))
+			result, _ := (hexToDecimal(number, base))
+
+			fmt.Printf("The Decimal result of %q base %d is %d\n \n", number, base, result)
 
 			fmt.Print("Do you have another HexaDecimal number to convert?\n 1. Yes\n 2. No, Quit\n 3. Go to Menu\n Select choice here: ")
 			choice, _ := reader.ReadString('\n')
@@ -135,7 +133,9 @@ start:
 			}
 
 			base := 2
-			fmt.Printf("The Decimal result of %q base %d is %d\n", number, base, binToDecimal(number, base))
+			result := (binToDecimal(number, base))
+
+			fmt.Printf("The Decimal result of %q base %d is %d\n", number, base, result )
 
 		choose_choice:
 			fmt.Println()
