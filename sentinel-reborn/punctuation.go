@@ -18,3 +18,35 @@ func fixArticle(word string) string {
  }
  return strings.Join(words, " ")
 }
+
+func multiPunctuation(text string) string {
+	replacements := map[string]string{
+		" ...": "...",
+		" !!":  "!!",
+		" ??":  "??",
+		" !?":  "!?",
+		" ?!":  "?!",
+	}
+
+	for old, newVal := range replacements {
+		text = strings.ReplaceAll(text, old, newVal)
+	}
+
+	return text
+}
+
+func fixPunctuation(text string) string {
+	text = multiPunctuation(text)
+
+	punctuations := []string{".", ",", "!", "?", ":", ";"}
+
+	for _, p := range punctuations {
+		text = strings.ReplaceAll(text, " "+p, p+" ")
+		text = strings.ReplaceAll(text, p+" ", p+" ")
+	}
+
+	text = strings.ReplaceAll(text, "' ", "'")
+	text = strings.ReplaceAll(text, " '", "'")
+
+	return strings.Join(strings.Fields(text), " ")
+}
