@@ -42,7 +42,7 @@ start:
 		goto start
 	}
 
-	if len(user_input) > 2 || len(user_input) < 2 {
+	if len(user_input) != 2 {
 		fmt.Print("Invalid base command\n Enter a base and a valid number\n \n")
 		goto start
 	}
@@ -256,7 +256,12 @@ start:
 	input := scanner.Text()
 	input = strings.ToLower(input)
 
-	if input == "exit" {
+	if input == "" {
+		fmt.Print("Enter operator and a valid set of number\n \n")
+		goto start
+	}
+
+	if input == "go to menu" {
 		fmt.Print(" Shutting down  SENTINEL CONTROL CALCULATOR.\n Goodbye.\n \n")
 		return
 	} else if input == "last" {
@@ -283,6 +288,11 @@ start:
 	user_Num2, err := strconv.Atoi(user_input[2])
 	if err != nil {
 		fmt.Print("Enter Digit Only!\n \n")
+	}
+
+	if len(user_input) != 3 {
+		fmt.Print("Enter operator and a valid set of number\n \n")
+		goto start
 	}
 
 	for {
