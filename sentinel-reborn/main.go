@@ -5,26 +5,33 @@ import (
 	"os"
 )
 
+func readFile(filename string) string {
+	data, err := os.ReadFile(filename)
+	if err != nil {
+		fmt.Println("Error reading file:", err)
+	}
+
+	return string(data)
+}
+
+
+func writeFile(filename string, content string) {
+    err := os.WriteFile(filename, []byte(content), 0644)
+    if err != nil {
+        fmt.Println("Error writing file:", err)
+    }
+}
+
 func main() {
 
-	if len(os.Args) != 3 {
+if len(os.Args) != 3 {
 		fmt.Println("Usage: go run . input.txt output.txt")
 	}
-	inputFile := os.Args[1]
-	outputFile := os.Args[2]
 
-	// file, err := os.Open("input.txt")
-	// if err != nil {
-	// 	fmt.Print(" Failed to open file\n No file name matches yours\n \n")
-	// }
-	// defer file.Close()
+	input1 := os.Args[1]
+	input2 := os.Args[2]
 	
-	content, err := os.ReadFile(inputFile)
-	if err != nil {
-		fmt.Print(" Failed to read file\n \n")
-	}
-	err = os.WriteFile(outputFile, []byte(content), 0644)
-	if err != nil {
-		fmt.Println(" Failed to write file")
-	}
+	content := readFile(input1)
+	
+	writeFile(input2, content)
 }
