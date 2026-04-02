@@ -59,7 +59,7 @@ start:
 			hex_Number := strings.ToUpper(strconv.FormatInt(decimal_value, 16))
 
 			fmt.Printf(" ✦ Binary : %v \n ✦ Hex    : %v\n \n", bin_Number, hex_Number)
-				goto start
+			goto start
 
 		case "bin":
 			bin_Number, err := strconv.ParseInt(number, 2, 64)
@@ -83,7 +83,6 @@ start:
 
 		case "go to menu":
 			fmt.Print("Returning to Menu\n \n")
-
 
 		default:
 			fmt.Print("Enter a base and a valid number\n \n")
@@ -246,8 +245,8 @@ func calculator() {
 
 start:
 	scanner := bufio.NewScanner(os.Stdin)
-	fmt.Println("WELCOME TO SENTINEL'S CALCULATOR")
-	fmt.Print("Enter 'Go to Menu' to Return to SENTINEL COMMAND AND CONTROL MENU\n  \n")
+	fmt.Println(" WELCOME TO SENTINEL'S CALCULATOR")
+	fmt.Print(" Enter 'Go to Menu' to Return to SENTINEL COMMAND AND CONTROL MENU\n Usage: <operator> <number> <number> \n E.g add 2 2, sub 5 2. \n \n")
 
 	fmt.Print("Type Here: ")
 
@@ -255,7 +254,7 @@ start:
 	input := scanner.Text()
 	input = strings.ToLower(input)
 
-	if input == "" {
+	if len(input) == 0 {
 		fmt.Print("Enter operator and a valid set of number\n \n")
 		goto start
 	}
@@ -277,20 +276,23 @@ start:
 	}
 
 	user_input := strings.Fields(input)
+
+	if len(user_input) != 3 {
+		fmt.Print("Enter operator and a valid set of number\n \n")
+		goto start
+	}
+
 	user_operator := user_input[0]
 	user_operator = strings.ToLower(user_operator)
 
 	user_Num1, err := strconv.Atoi(user_input[1])
 	if err != nil {
 		fmt.Print("Enter Digit Only!\n \n")
+		goto start
 	}
 	user_Num2, err := strconv.Atoi(user_input[2])
 	if err != nil {
 		fmt.Print("Enter Digit Only!\n \n")
-	}
-
-	if len(user_input) != 3 {
-		fmt.Print("Enter operator and a valid set of number\n \n")
 		goto start
 	}
 
@@ -366,7 +368,7 @@ start:
 			goto start
 
 		default:
-			fmt.Print("Out of operation range\n", "Enter a valid command \n")
+			fmt.Print("Out of operation range\n", "Enter a valid command \n \n")
 			goto start
 		}
 
