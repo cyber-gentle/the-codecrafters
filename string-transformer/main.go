@@ -5,8 +5,40 @@
 
 package main
 
-//import ()
+import (
+	"bufio"
+	"fmt"
+	"os"
+	"strings"
+)
+
+func toUpperCase(s string) string {
+	return strings.ToUpper(s)
+}
 
 func main() {
+
+	start:
+	reader := bufio.NewReader(os.Stdin)
+
+	fmt.Print("\n SENTINEL STRING TRANSFORMER — ONLINE\n ──────────────────────────────────────\n \n")
+	fmt.Print(" > Enter command: ")
+
+	input_word, _ := reader.ReadString('\n') // User's input
+	input_word = strings.TrimSpace(input_word)
+	split := strings.Fields(input_word) // Splitting of User's input into slice of string
+	cmd := strings.ToLower(split[0])    // getting command from User's input to lower case
+
+	word := split[1:]                // Get word from  user input in form of slice of strings
+	words := strings.Join(word, " ") // Joining word to back from slice to string
+
+		for {
+			switch cmd {
+			case "upper":
+				fmt.Printf(" → %v\n \n", toUpperCase(words))
+				goto start
+
+			}
+		}
 
 }
