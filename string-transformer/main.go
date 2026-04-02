@@ -40,8 +40,6 @@ start:
 	word := split[1:]                // Get word from  user input in form of slice of strings
 	words := strings.Join(word, " ") // Joining word to back from slice to string
 
-	fmt.Println(input_word, split, cmd, word, words)
-
 	for {
 		switch cmd {
 		case "upper":
@@ -51,7 +49,11 @@ start:
 		case "lower":
 			fmt.Printf(" → %v\n \n", toLowerCase(words))
 			goto start
+
+		case "exit":
+			fmt.Print("Shutting down String Transformer. Goodbye.\n \n")
+			return
 		}
-	}
+	} 
 
 }
