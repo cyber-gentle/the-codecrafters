@@ -16,7 +16,7 @@ func toUpperCase(s string) string {
 	return strings.ToUpper(s)
 }
 
-func  toLowerCase(s string) string {
+func toLowerCase(s string) string {
 	return strings.ToLower(s)
 }
 
@@ -49,7 +49,7 @@ start:
 			goto start
 
 		case "lower":
-			fmt.Printf(" → %v\n \n",  toLowerCase(words))
+			fmt.Printf(" → %v\n \n", toLowerCase(words))
 			goto start
 		}
 	}
