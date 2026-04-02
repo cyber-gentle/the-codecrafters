@@ -34,10 +34,8 @@ start:
 	input := scanner.Text()
 	input = strings.ToLower(input)
 	user_input := strings.Fields(input)
-	input_base := user_input[0]
-	number := user_input[1]
 
-	if input == "" {
+		if len(user_input) == 0 {
 		fmt.Print("Enter base and a valid number of the base\n \n")
 		goto start
 	}
@@ -46,6 +44,11 @@ start:
 		fmt.Print("Invalid base command\n Enter a base and a valid number\n \n")
 		goto start
 	}
+
+	input_base := user_input[0]
+	number := user_input[1]
+
+
 
 	for {
 		switch input_base {
