@@ -51,8 +51,12 @@ start:
 			goto start
 
 		case "exit":
-			fmt.Print("Shutting down String Transformer. Goodbye.\n \n")
+			fmt.Print(" Shutting down String Transformer. Goodbye.\n \n")
 			return
+
+		default:
+			fmt.Printf(" ✗ Unknown command: %q\n Valid commands: upper, lower, cap, title, snake, reverse, exit \n \n", cmd)
+			goto start
 		}
 	} 
 
