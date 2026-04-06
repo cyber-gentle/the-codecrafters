@@ -64,6 +64,26 @@ func titleCase(s string) string {
 	return strings.Join(words, " ")
 }
 
+func reverseWords(s string) string {
+	words := strings.Fields(s)
+
+	for i, word := range words {
+		runes := []rune(word)
+
+		left := 0
+		right := len(runes) - 1
+		for left < right {
+			runes[left], runes[right] = runes[right], runes[left]
+			left++
+			right--
+		}
+
+		words[i] = string(runes)
+	}
+
+	return strings.Join(words, " ")
+}
+
 func palindrome(s string) string {
 	cleaned := strings.ToLower(strings.ReplaceAll(s, " ", ""))
 
@@ -117,6 +137,9 @@ start:
 
 		case "title":
 			fmt.Printf(" → %v\n \n", titleCase(words))
+
+		case "reverse":
+			fmt.Printf(" → %v\n \n", reverseWords(words))
 
 		case "palindrome":
 			fmt.Printf(" → %q %v\n \n", words, palindrome(words))
