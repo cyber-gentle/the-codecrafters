@@ -37,6 +37,33 @@ func toSnakeCase(s string) string {
 	return strings.ToLower(result.String())
 }
 
+func titleCase(s string) string {
+	smallWords := map[string]bool{
+		"a": true, "an": true, "the": true, "and": true,
+		"but": true, "or": true, "for": true, "nor": true,
+		"on": true, "at": true, "to": true, "by": true,
+		"in": true, "of": true, "up": true, "as": true,
+		"is": true, "it": true,
+	}
+
+	words := strings.Fields(s)
+
+	for i, word := range words {
+		if len(word) == 0 {
+			continue
+		}
+		lowerWord := strings.ToLower(word)
+
+		if i == 0 || !smallWords[lowerWord] {
+			words[i] = strings.ToUpper(string(lowerWord[0])) + lowerWord[1:]
+		} else {
+			words[i] = lowerWord
+		}
+	}
+
+	return strings.Join(words, " ")
+}
+
 func palindrome(s string) string {
 	cleaned := strings.ToLower(strings.ReplaceAll(s, " ", ""))
 
@@ -87,6 +114,9 @@ start:
 
 		case "snake":
 			fmt.Printf(" → %v\n \n", toSnakeCase(words))
+
+		case "title":
+			fmt.Printf(" → %v\n \n", titleCase(words))
 
 		case "palindrome":
 			fmt.Printf(" → %q %v\n \n", words, palindrome(words))
