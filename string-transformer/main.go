@@ -84,6 +84,18 @@ func reverseWords(s string) string {
 	return strings.Join(words, " ")
 }
 
+func capitalizeCase(s string) string {
+	words := strings.Fields(s)
+
+	for i, word := range words {
+		if len(word) == 0 {
+			continue
+		}
+		words[i] = strings.ToUpper(string(word[0])) + strings.ToLower(word[1:])
+	}
+	return strings.Join(words, " ")
+}
+
 func palindrome(s string) string {
 	cleaned := strings.ToLower(strings.ReplaceAll(s, " ", ""))
 
@@ -140,6 +152,9 @@ start:
 
 		case "reverse":
 			fmt.Printf(" → %v\n \n", reverseWords(words))
+
+		case "cap":
+			fmt.Printf(" → %v\n \n", capitalizeCase(words))
 
 		case "palindrome":
 			fmt.Printf(" → %q %v\n \n", words, palindrome(words))
