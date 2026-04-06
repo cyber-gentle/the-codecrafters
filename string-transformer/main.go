@@ -123,49 +123,57 @@ start:
 	fmt.Print("\n SENTINEL STRING TRANSFORMER — ONLINE\n ──────────────────────────────────────\n \n")
 	fmt.Print(" > Enter command: ")
 
-	input_word, _ := reader.ReadString('\n') // User's input
-	input_word = strings.TrimSpace(input_word)
-	split := strings.Fields(input_word) // Splitting of User's input into slice of string
-	cmd := strings.ToLower(split[0])    // getting command from User's input to lower case
-
-	word := split[1:] // Get word from  user input in form of slice of strings
-	if len(word) == 0 {
-		fmt.Printf("✗ No text provided. Usage: %v <text>\n \n", cmd)
-		goto start
-
-	}
-	words := strings.Join(word, " ") // Joining word to back from slice to string
-
 	for {
+		
+		inputWord, _ := reader.ReadString('\n')
+		inputWord = strings.TrimSpace(inputWord)
+
+		if inputWord == "" {
+			continue
+		}
+
+		split := strings.Fields(inputWord)
+
+		cmd := strings.ToLower(split[0])
+
+		wordSlice := split[1:]
+
+		if len(wordSlice) == 0 && cmd != "exit" {
+			fmt.Printf(" ✗ No text provided. Usage: %v <text>\n \n", cmd)
+			continue
+		}
+
+		words := strings.Join(wordSlice, " ")
+
 		switch cmd {
 		case "upper":
-			fmt.Printf(" → %v\n \n", toUpperCase(words))
+			fmt.Printf("   → %v\n \n", toUpperCase(words))
 
 		case "lower":
-			fmt.Printf(" → %v\n \n", toLowerCase(words))
-
-		case "snake":
-			fmt.Printf(" → %v\n \n", toSnakeCase(words))
-
-		case "title":
-			fmt.Printf(" → %v\n \n", titleCase(words))
-
-		case "reverse":
-			fmt.Printf(" → %v\n \n", reverseWords(words))
+			fmt.Printf("   → %v\n \n", toLowerCase(words))
 
 		case "cap":
-			fmt.Printf(" → %v\n \n", capitalizeCase(words))
+			fmt.Printf("   → %v\n \n", capitalizeCase(words))
+
+		case "title":
+			fmt.Printf("   → %v\n \n", titleCase(words))
+
+		case "snake":
+			fmt.Printf("   → %v\n \n", toSnakeCase(words))
+
+		case "reverse":
+			fmt.Printf("   → %v\n \n", reverseWords(words))
 
 		case "palindrome":
-			fmt.Printf(" → %q %v\n \n", words, palindrome(words))
+			fmt.Printf("   → %v\n \n", palindrome(words))
 
 		case "exit":
-			fmt.Print(" Shutting down String Transformer. Goodbye.\n \n")
+			fmt.Println(" Shutting down String Transformer. Goodbye.")
 			return
 
 		default:
-			fmt.Printf(" ✗ Unknown command: %q\n Valid commands: upper, lower, cap, title, snake, reverse, exit \n \n", cmd)
+			fmt.Printf(" ✗ Unknown command: %q\n", cmd)
+			fmt.Print("   Valid commands: upper, lower, cap, title, snake, reverse, palindrome, exit\n \n")
 		}
 	}
-
 }
