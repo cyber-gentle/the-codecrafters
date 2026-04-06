@@ -117,7 +117,7 @@ func palindrome(s string) string {
 
 func main() {
 
-start:
+//start:
 	reader := bufio.NewReader(os.Stdin)
 
 	fmt.Print("\n SENTINEL STRING TRANSFORMER — ONLINE\n ──────────────────────────────────────\n \n")
