@@ -21,31 +21,23 @@ func toLowerCase(s string) string {
 }
 
 func palindrome(s string) string {
-	var reversed byte
-	word := s
-	for i := len(word) - 1; i >= 0; i-- {
-		reversed = s[i]
-		return string(reversed)
+	cleaned := strings.ToLower(strings.ReplaceAll(s, " ", ""))
 
+	runes := []rune(cleaned)
+	left := 0
+	right := len(runes) - 1
+	for left < right {
+		runes[left], runes[right] = runes[right], runes[left]
+		left++
+		right--
 	}
-	return word
+	reversed := string(runes)
 
-}
-
-func toSnakeCase(s string) string {
-	word :=  strings.ReplaceAll(s, " ", "_")
-	for i, char := range word {
-		if char != 0-9 {
-
-		}
+	if cleaned == reversed {
+		return fmt.Sprintf("✦ %q is a palindrome!", s)
 	}
-
-	return strings.ToLower(word)
+	return fmt.Sprintf("✗ %q is not a palindrome.", s)
 }
-
-// func capitalizeCase(s string) string {
-// 	return strings.ToLower(s)
-// }
 
 func main() {
 
@@ -79,11 +71,11 @@ start:
 			goto start
 
 		case "snake":
-			fmt.Printf(" → %v\n \n", toSnakeCase(words))
+			//fmt.Printf(" → %v\n \n", toSnakeCase(words))
 			goto start
 
 		case "palindrome":
-			fmt.Printf(" → %v\n \n", palindrome(words))
+			fmt.Printf(" → %q %v\n \n", words, palindrome(words))
 			goto start
 
 		case "exit":
