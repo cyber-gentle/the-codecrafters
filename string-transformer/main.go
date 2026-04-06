@@ -20,6 +20,23 @@ func toLowerCase(s string) string {
 	return strings.ToLower(s)
 }
 
+func toSnakeCase(s string) string {
+	word := strings.ReplaceAll(s, " ", "_")
+
+	var result strings.Builder
+
+	for _, char := range word {
+		isLetter := (char >= 'a' && char <= 'z') || (char >= 'A' && char <= 'Z')
+		isDigit := char >= '0' && char <= '9'
+		isUnderscore := char == '_'
+
+		if isLetter || isDigit || isUnderscore {
+			result.WriteRune(char)
+		}
+	}
+	return strings.ToLower(result.String())
+}
+
 func palindrome(s string) string {
 	cleaned := strings.ToLower(strings.ReplaceAll(s, " ", ""))
 
@@ -64,19 +81,15 @@ start:
 		switch cmd {
 		case "upper":
 			fmt.Printf(" → %v\n \n", toUpperCase(words))
-			goto start
 
 		case "lower":
 			fmt.Printf(" → %v\n \n", toLowerCase(words))
-			goto start
 
 		case "snake":
-			//fmt.Printf(" → %v\n \n", toSnakeCase(words))
-			goto start
+			fmt.Printf(" → %v\n \n", toSnakeCase(words))
 
 		case "palindrome":
 			fmt.Printf(" → %q %v\n \n", words, palindrome(words))
-			goto start
 
 		case "exit":
 			fmt.Print(" Shutting down String Transformer. Goodbye.\n \n")
@@ -84,7 +97,6 @@ start:
 
 		default:
 			fmt.Printf(" ✗ Unknown command: %q\n Valid commands: upper, lower, cap, title, snake, reverse, exit \n \n", cmd)
-			goto start
 		}
 	}
 
