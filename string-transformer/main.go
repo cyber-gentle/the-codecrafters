@@ -12,15 +12,24 @@ import (
 	"strings"
 )
 
-func toUpperCase(s string) string {
+func toUpperCase(s, cmd string) string {
+	if s == "" {
+		fmt.Printf(" ✗ No text provided. Usage: %v <text>\n \n", cmd)
+	}
 	return strings.ToUpper(s)
 }
 
-func toLowerCase(s string) string {
+func toLowerCase(s, cmd string) string {
+	if s == "" {
+		fmt.Printf(" ✗ No text provided. Usage: %v <text>\n \n", cmd)
+	}
 	return strings.ToLower(s)
 }
 
-func toSnakeCase(s string) string {
+func toSnakeCase(s, cmd string) string {
+	if s == "" {
+		fmt.Printf(" ✗ No text provided. Usage: %v <text>\n \n", cmd)
+	}
 	word := strings.ReplaceAll(s, " ", "_")
 
 	var result strings.Builder
@@ -37,7 +46,10 @@ func toSnakeCase(s string) string {
 	return strings.ToLower(result.String())
 }
 
-func titleCase(s string) string {
+func titleCase(s, cmd string) string {
+	if s == "" {
+		fmt.Printf(" ✗ No text provided. Usage: %v <text>\n \n", cmd)
+	}
 	smallWords := map[string]bool{
 		"a": true, "an": true, "the": true, "and": true,
 		"but": true, "or": true, "for": true, "nor": true,
@@ -64,7 +76,10 @@ func titleCase(s string) string {
 	return strings.Join(words, " ")
 }
 
-func reverseWords(s string) string {
+func reverseWords(s, cmd string) string {
+	if s == "" {
+		fmt.Printf(" ✗ No text provided. Usage: %v <text>\n \n", cmd)
+	}
 	words := strings.Fields(s)
 
 	for i, word := range words {
@@ -84,7 +99,10 @@ func reverseWords(s string) string {
 	return strings.Join(words, " ")
 }
 
-func capitalizeCase(s string) string {
+func capitalizeCase(s, cmd string) string {
+	if s == "" {
+		fmt.Printf(" ✗ No text provided. Usage: %v <text>\n \n", cmd)
+	}
 	words := strings.Fields(s)
 
 	for i, word := range words {
@@ -96,7 +114,7 @@ func capitalizeCase(s string) string {
 	return strings.Join(words, " ")
 }
 
-func palindrome(s string) string {
+func palindrome(s, cmd string) string {
 	cleaned := strings.ToLower(strings.ReplaceAll(s, " ", ""))
 
 	runes := []rune(cleaned)
@@ -116,20 +134,19 @@ func palindrome(s string) string {
 }
 
 func main() {
-
-//start:
 	reader := bufio.NewReader(os.Stdin)
 
 	fmt.Print("\n SENTINEL STRING TRANSFORMER — ONLINE\n ──────────────────────────────────────\n \n")
-	fmt.Print(" > Enter command: ")
 
 	for {
-		
+	start:
+		fmt.Print(" > Enter command: ")
 		inputWord, _ := reader.ReadString('\n')
 		inputWord = strings.TrimSpace(inputWord)
 
 		if inputWord == "" {
-			continue
+			goto start
+			//continue
 		}
 
 		split := strings.Fields(inputWord)
@@ -138,37 +155,32 @@ func main() {
 
 		wordSlice := split[1:]
 
-		if len(wordSlice) == 0 && cmd != "exit" {
-			fmt.Printf(" ✗ No text provided. Usage: %v <text>\n \n", cmd)
-			continue
-		}
-
 		words := strings.Join(wordSlice, " ")
 
 		switch cmd {
 		case "upper":
-			fmt.Printf("   → %v\n \n", toUpperCase(words))
+			fmt.Printf(" → %v\n \n", toUpperCase(words, cmd))
 
 		case "lower":
-			fmt.Printf("   → %v\n \n", toLowerCase(words))
+			fmt.Printf(" → %v\n \n", toLowerCase(words, cmd))
 
 		case "cap":
-			fmt.Printf("   → %v\n \n", capitalizeCase(words))
+			fmt.Printf(" → %v\n \n", capitalizeCase(words, cmd))
 
 		case "title":
-			fmt.Printf("   → %v\n \n", titleCase(words))
+			fmt.Printf(" → %v\n \n", titleCase(words, cmd))
 
 		case "snake":
-			fmt.Printf("   → %v\n \n", toSnakeCase(words))
+			fmt.Printf(" → %v\n \n", toSnakeCase(words, cmd))
 
 		case "reverse":
-			fmt.Printf("   → %v\n \n", reverseWords(words))
+			fmt.Printf(" → %v\n \n", reverseWords(words, cmd))
 
 		case "palindrome":
-			fmt.Printf("   → %v\n \n", palindrome(words))
+			fmt.Printf(" → %v\n \n", palindrome(words, cmd))
 
 		case "exit":
-			fmt.Println(" Shutting down String Transformer. Goodbye.")
+			fmt.Print(" Shutting down String Transformer. Goodbye.\n \n")
 			return
 
 		default:
